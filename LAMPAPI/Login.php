@@ -3,9 +3,9 @@
 
 	$inData = getRequestInfo();
 	
-	$Login = $inData["Login"];
-	$FirstName = "";
-	$LastName = "";
+	$id = 0;
+	$firstName = "";
+	$lastName = "";
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
 	if( $conn->connect_error )
@@ -45,13 +45,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
+		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $FirstName, $LastName, $id )
+	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $FirstName . '","lastName":"' . $LastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
