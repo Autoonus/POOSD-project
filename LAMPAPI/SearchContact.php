@@ -12,9 +12,9 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Users where Name like ? and UserID=?");			//we need to edit this according to the database, looks like database language
-		$colorName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $colorName, $inData["userId"]);
+		$stmt = $conn->prepare("select Name from Contacts where Name like ? and UserID=?");			//we need to edit this according to the database, looks like database language
+		$contactName = "%" . $inData["search"] . "%";
+		$stmt->bind_param("ss", $contactName, $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
