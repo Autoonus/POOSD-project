@@ -12,7 +12,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Contacts where Name like ? and UserID=?");			//we need to edit this according to the database, looks like database language
+		$stmt = $conn->prepare("select Name from Contacts where Name like ? and UserID=?");
 		$contactName = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ss", $contactName, $inData["userId"]);
 		$stmt->execute();
@@ -26,7 +26,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';												//edit this one too, less sure about the syntax
+			$searchResults .= '"' . $row["Name"] . '"';
 		}
 		
 		if( $searchCount == 0 )
