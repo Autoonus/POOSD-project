@@ -23,11 +23,6 @@
 		$result = $stmt->get_result();
 
 		if(empty($result)){
-			//errors out if taken
-			returnWithError("Username already taken.");
-		}
-		else
-		{
 			//creates the login if login was not taken
 			$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES (?,?,?,?)");
 			$stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password);
@@ -35,6 +30,11 @@
 			$stmt->close();
 			$conn->close();
 			returnWithError("");
+		}
+		else
+		{
+			//errors out if taken
+			returnWithError("Username already taken.");
 		}
 	}
 	
