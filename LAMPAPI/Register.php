@@ -17,28 +17,24 @@
 	else
 	{
 		//check if the login has been used before
-		$stmt = $conn->prepare("SELECT * FROM Users Where Login=?");	
+		$stmt = $conn->prepare("SELECT * FROM Users WHERE Login=?");	
 		$stmt->bind_param("s", $Login);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		$check = $result->num_rows;
-		$stmt->close();
 
-		if($check > 0){
+		if(empty($result)){
+			//errors out if taken
+			returnWithError("Username already taken.");
+		}
+		else
+		{
 			//creates the login if login was not taken
 			$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES (?,?,?,?)");
 			$stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password);
 			$stmt->execute();
-			$id = $conn->insert_id;
-
 			$stmt->close();
 			$conn->close();
-
-			returnWithInfo($FirstName, $LastName, $id);
-		}
-		else{
-			//errors out if taken
-			returnWithError("Username already taken.");
+			returnWithError("");
 		}
 	}
 	
