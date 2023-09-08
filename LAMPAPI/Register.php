@@ -39,6 +39,7 @@
 		else
 		{
 			//errors out if taken
+			$conn->close();
 			returnWithError("Username already taken.");
 		}
 	}
