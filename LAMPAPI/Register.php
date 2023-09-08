@@ -23,6 +23,7 @@
 		$result = $stmt->get_result();
 		// $check = $result->num_rows;
 		$check = mysqli_num_rows($result);
+		print($check);
 		$stmt->close();
 
 		if($check > 0){
@@ -34,12 +35,14 @@
 			$stmt->close();
 			$conn->close();
 
+			http_response_code(200);
 			returnWithInfo($FirstName, $LastName, $id);
 		}
 		else
 		{
 			//errors out if taken
 			$conn->close();
+			http_response_code(300);
 			returnWithError("Username already taken.");
 		}
 	}
