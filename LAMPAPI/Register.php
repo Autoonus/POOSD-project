@@ -17,7 +17,7 @@
 	else
 	{
 		//check if the login has been used before
-		$stmt = $conn->prepare("SELECT * FROM Users WHERE Login=?");	
+		$stmt = $conn->prepare("SELECT * FROM Users WHERE Login = BINARY ?");	
 		$stmt->bind_param("s", $Login);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -26,7 +26,13 @@
 		print($check);
 		$stmt->close();
 
-		if($check > 0){
+		if($row = $result->fetch_assoc()){
+			//This runs when a result is successfully fetched (I.E. Username taken)
+			$conn->close();
+			returnWithError("Username already taken.");
+		}
+		else {
+			//Runs if username not taken
 			//creates the login if login was not taken
 			$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES (?,?,?,?)");
 			$stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password);
@@ -37,13 +43,7 @@
 
 			http_response_code(200);
 			returnWithInfo($FirstName, $LastName, $id);
-		}
-		else
-		{
-			//errors out if taken
-			$conn->close();
-			http_response_code(300);
-			returnWithError("Username already taken.");
+			
 		}
 	}
 	
