@@ -4,10 +4,11 @@
 	$inData = getRequestInfo();
 	
 	//input data to register
-	$Login = $inData["Login"];					
-	$Password = $inData["Password"];
 	$FirstName = $inData["FirstName"];
 	$LastName = $inData["LastName"];
+  $Login = $inData["Login"];					
+	$Password = $inData["Password"];
+	
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
 	if( $conn->connect_error )
@@ -21,10 +22,7 @@
 		$stmt->bind_param("s", $Login);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		// $check = $result->num_rows;
-		$check = mysqli_num_rows($result);
-		print($check);
-		$stmt->close();
+    $stmt->close();
 
 		if($row = $result->fetch_assoc()){
 			//This runs when a result is successfully fetched (I.E. Username taken)
@@ -34,14 +32,15 @@
 		else {
 			//Runs if username not taken
 			//creates the login if login was not taken
-			$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES (?,?,?,?)");
+      $query = "INSERT INTO Users (FirstName,LastName,Login,Password) VALUES (?, ?, ?, ?)";
+      $stmt = $conn->prepare($query);
 			$stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password);
 			$stmt->execute();
-			$id->$conn->insert_id;
+      
+			$id = $conn->insert_id;
 			$stmt->close();
-			$conn->close();
+      $conn->close();
 
-			http_response_code(200);
 			returnWithInfo($FirstName, $LastName, $id);
 			
 		}
