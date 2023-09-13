@@ -13,7 +13,7 @@ function doLogin() {
 	let Login = document.getElementById("Login").value;
 	let Password = document.getElementById("Password").value;
 	
-	document.getElementById("LoginResult").innerHTML = "Request Sent...";
+	document.getElementById("loginResult").innerHTML = "Request Sent...";
 
 	let tmp = {Login:Login, Password:Password};
 	let jsonPayload = JSON.stringify(tmp);
@@ -35,7 +35,7 @@ function doLogin() {
 		
 				if( UserID < 1 )
 				{		
-					document.getElementById("LoginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
@@ -50,7 +50,7 @@ function doLogin() {
 
 	catch(err)
 	{
-		document.getElementById("LoginResult").innerHTML = err.message;
+		document.getElementById("loginResult").innerHTML = err.message;
 	}
 
 }
@@ -98,7 +98,7 @@ function register() {
 	}
 
 	catch(err) {
-		document.getElementById("LoginResult").innerHTML = err.message;
+		document.getElementById("loginResult").innerHTML = err.message;
 	}
 
 }
@@ -138,17 +138,17 @@ function isAvailable(Login, userAvailable) {
 }
 
 function showLogin() {
-	document.getElementById("LoginOption").className = "Selected";
+	document.getElementById("loginOption").className = "Selected";
 	document.getElementById("registerOption").className = "Unselected";
 	document.getElementById("registerDiv").style.display = "none";
-	document.getElementById("LoginDiv").style.display = "block";
+	document.getElementById("loginDiv").style.display = "block";
 }
 
 function showRegister() {
-	document.getElementById("LoginOption").className = "Unselected";
+	document.getElementById("loginOption").className = "Unselected";
 	document.getElementById("registerOption").className = "Selected";
 	document.getElementById("registerDiv").style.display = "block";
-	document.getElementById("LoginDiv").style.display = "none";
+	document.getElementById("loginDiv").style.display = "none";
 }
 
 function disable(btn) {
