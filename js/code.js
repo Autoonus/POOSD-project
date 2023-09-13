@@ -1,14 +1,14 @@
 const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
 
-let UserID = 0;
-let FirstName = "";
-let LastName = "";
+let userID = 0;
+let firstName = "";
+let lastName = "";
 
 function doLogin() {
-	UserID = 0;
-	FirstName = "";
-	LastName = "";
+	userID = 0;
+	firstName = "";
+	lastName = "";
 	
 	let Login = document.getElementById("Login").value;
 	let Password = document.getElementById("Password").value;
@@ -61,9 +61,9 @@ function register() {
 		return;
 	}
 
-	UserID = 0;
-	FirstName = "";
-	LastName = "";
+	userID = 0;
+	firstName = "";
+	lastName = "";
 	
 	let Login = document.getElementById("newUser").value;
 	let Password = document.getElementById("newPassword").value;
