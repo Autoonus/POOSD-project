@@ -31,18 +31,16 @@ function doLogin() {
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
+				UserID = jsonObject.id;
 		
-				if( userId < 1 )
+				if( UserID < 1 )
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
-
-				saveCookie();
+				FirstName = jsonObject.FirstName;
+				LastName = jsonObject.LastName;
 	
 				window.location.href = "contacts.html";
 			}
