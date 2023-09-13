@@ -26,24 +26,28 @@ function doLogin() {
 	
 	try
 	{
-		xhr.send(jsonPayload);
-			if (xhr.status == 200) 
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				UserID = jsonObject.id;
+				userId = jsonObject.id;
 		
-				if( UserID < 1 )
+				if( userId < 1 )
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
-				FirstName = jsonObject.FirstName;
-				LastName = jsonObject.LastName;
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+
+				saveCookie();
 	
 				window.location.href = "contacts.html";
 			}
-		
+		};
+		xhr.send(jsonPayload);
 	}
 
 	catch(err)
