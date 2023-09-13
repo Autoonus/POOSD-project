@@ -26,9 +26,8 @@ function doLogin() {
 	
 	try
 	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
+		xhr.send(jsonPayload);
+			if (xhr.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				UserID = jsonObject.id;
@@ -44,8 +43,7 @@ function doLogin() {
 	
 				window.location.href = "contacts.html";
 			}
-		};
-		xhr.send(jsonPayload);
+		
 	}
 
 	catch(err)
