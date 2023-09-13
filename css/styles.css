@@ -1,140 +1,145 @@
-body 
-{
-    background-color: #000000;
-}
+#loginRegisterDiv {
 
-#title 
-{
-    font-size: 40px;
-    width: 100%;
-    margin: 2% 5%;
+    border-radius: 20px;
+
+    background-color: aliceblue;
     text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-    color: #FFFFFF;
+
+    max-width: 750px;
+    height: auto;
+    
+    margin: 0 auto 200px;
+    padding: 10px 50px;
+
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2) ;
+
 }
 
-#loginDiv
-{
-    font-size: 30px;
+#controlDiv {
+    border-bottom: 3px solid #0178ff;
     width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
 }
 
-#loggedInDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
-}
-
-#accessUIDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
-}
-
-.buttons
-{
-    font-size: 30px;
-    border-radius: 25px;
-    width: 50%;
-    margin-left: 25%;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.buttons:hover{
-    background-color: #00d5124f;
-    color: #FFFFFF;
-    opacity: 50%;
-}
-
-#loginName
-{
-	font-size: 30px;
-}
-#loginPassword
-{
-	font-size: 30px;
-}
-#searchText
-{
-	font-size: 30px;
-}
-#colorText
-{
-	font-size: 30px;
-}
-
-input[type="text"],input[type="password"]{
-    border-radius: 25px;
-    text-align: center;
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#inner-title{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
-}
-
-#loginResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
-}
-
-#userName{
-    display: inline-block;
-    width: 80%;
-    margin-left: 10%;
-    text-align: center;
-}
-
-#logoutButton{
-    width: 20%;
-    margin-left: 40%;
-}
-
-select{
-    width: 30%;
-    margin-left: 35%;
-    margin-top: 2%;
-    font-size: 0.75em;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#colorSearchResult{
+#usernameRequirementsDiv {
     display: none;
 }
 
-#colorAddResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
+#passwordRequirementsDiv {
+    display: none;
+}
+
+.InputBox {
+    
+    border-radius: 15px;
+    outline: 0px;
+    border: 2px solid #0178ff;
+
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+
+    box-sizing: border-box;
+
+    font-size: 16px;
+}
+
+.Button {
+
+    border-radius: 15px;
+    outline: 0px;
+    border: 0px;
+
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    
+    box-sizing: border-box;
+
+    font-size: 18px;
+    background-color: #0178ff;
+    color: white;
+
+    cursor: pointer;
+}
+
+.Button:hover {
+    background-color: #4501ff;
+}
+
+.DisabledButton {
+    
+    border-radius: 15px;
+    outline: 0px;
+    border: 0px;
+
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    
+    box-sizing: border-box;
+
+    font-size: 18px;
+    background-color: #696969;
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.Unselected {
+    border:0px;
+
+    flex: 0 1 auto;
+    margin: 0px 0px;
+    padding: 5px;
+
+    display:inline-block;
+    vertical-align: middle;  
+    box-sizing: border-box;
+
+    font-size: 24px;
+    background-color: aliceblue;
+    color: #0178ff;
+
+    cursor: pointer;
+}
+
+.Unselected:hover {
+    background: #0178ff;
+    color: white;
+}
+
+.Selected {
+    border:0px;
+
+    flex: 0 1 auto;
+    margin: 0px 0px;
+    padding: 5px;
+
+    display:inline-block;
+    vertical-align: middle;  
+    box-sizing: border-box;
+
+    font-size: 24px;
+    background: #0178ff;
+    color: white;
+
+    cursor: pointer;
+    
+}
+
+.Selected:hover {
+    background: #4501ff;
+    color: white;
+}
+
+.valid {
+    color: rgb(0, 255, 0);
+}
+
+.invalid {
+    color: rgb(255, 0, 0);
 }

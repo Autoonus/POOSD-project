@@ -1,31 +1,29 @@
-const urlBase = 'http://COP4331-5.com/LAMPAPI';
+const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
 
-let userId = 0;
-let firstName = "";
-let lastName = "";
+let UserID = 0;
+let FirstName = "";
+let LastName = "";
 
-function doLogin()
-{
-	userId = 0;
-	firstName = "";
-	lastName = "";
+function doLogin() {
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
 	
-	let login = document.getElementById("loginName").value;
-	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
+	let Login = document.getElementById("Login").value;
+	let Password = document.getElementById("Password").value;
 	
-	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("LoginResult").innerHTML = "Request Sent...";
 
-	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
-	let jsonPayload = JSON.stringify( tmp );
+	let tmp = {Login:Login, Password:Password};
+	let jsonPayload = JSON.stringify(tmp);
 	
 	let url = urlBase + '/Login.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
 	try
 	{
 		xhr.onreadystatechange = function() 
@@ -33,153 +31,135 @@ function doLogin()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				userId = jsonObject.id;
+				UserID = jsonObject.id;
 		
-				if( userId < 1 )
+				if( UserID < 1 )
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("LoginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 		
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
-
-				saveCookie();
+				FirstName = jsonObject.FirstName;
+				LastName = jsonObject.LastName;
 	
-				window.location.href = "color.html";
+				window.location.href = "contacts.html";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
+
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		document.getElementById("LoginResult").innerHTML = err.message;
 	}
 
 }
 
-function saveCookie()
-{
-	let minutes = 20;
-	let date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-}
-
-function readCookie()
-{
-	userId = -1;
-	let data = document.cookie;
-	let splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
-	{
-		let thisOne = splits[i].trim();
-		let tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
-		{
-			firstName = tokens[1];
-		}
-		else if( tokens[0] == "lastName" )
-		{
-			lastName = tokens[1];
-		}
-		else if( tokens[0] == "userId" )
-		{
-			userId = parseInt( tokens[1].trim() );
-		}
+function register() {
+	if (document.getElementById("registerButton").className == "DisabledButton") {
+		document.getElementById("registerResult").innerHTML = "Please Meet Username and Password Criteria";
+		return;
 	}
+
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
 	
-	if( userId < 0 )
-	{
-		window.location.href = "index.html";
-	}
-	else
-	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-	}
-}
-
-function doLogout()
-{
-	userId = 0;
-	firstName = "";
-	lastName = "";
-	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-	window.location.href = "index.html";
-}
-
-function addColor()
-{
-	let newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
-
-	let tmp = {color:newColor,userId,userId};
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/AddColor.' + extension;
+	let Login = document.getElementById("newUser").value;
+	let Password = document.getElementById("newPassword").value;
+	let FirstName = document.getElementById("FirstName").value;
+	let LastName = document.getElementById("LastName").value;
 	
+	document.getElementById("registerResult").innerHTML = "Attempting registration...";
+
+	let tmp = {Login:Login, Password:Password, FirstName:FirstName, LastName:LastName};
+	let jsonPayload = JSON.stringify(tmp);
+	
+	let url = urlBase + '/Register.' + extension;
+
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch(err)
-	{
-		document.getElementById("colorAddResult").innerHTML = err.message;
-	}
 	
-}
-
-function searchColor()
-{
-	let srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
-	
-	let colorList = "";
-
-	let tmp = {search:srch,userId:userId};
-	let jsonPayload = JSON.stringify( tmp );
-
-	let url = urlBase + '/SearchColors.' + extension;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+	try	{
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ )
-				{
-					colorList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						colorList += "<br />\r\n";
-					}
+
+				if (jsonObject.error != '') {
+					document.getElementById("registerResult").innerHTML = "Issue registering...";
+				} else {
+					document.getElementById("registerResult").innerHTML = "Registration successful!";
 				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
+
 			}
 		};
 		xhr.send(jsonPayload);
 	}
-	catch(err)
-	{
-		document.getElementById("colorSearchResult").innerHTML = err.message;
+
+	catch(err) {
+		document.getElementById("LoginResult").innerHTML = err.message;
 	}
-	
+
+}
+
+function isAvailable(Login, userAvailable) {
+	return new Promise((resolve, reject) => {
+		let tmp = {Login:Login};
+		let jsonPayload = JSON.stringify(tmp);
+		
+		let url = urlBase + '/CheckUsernameAvailability.' + extension;
+
+		let xhr = new XMLHttpRequest();
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+		
+		try	{
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					let jsonObject = JSON.parse( xhr.responseText );
+
+					if (jsonObject.error == '') {
+						resolve(true);
+					} else {
+						resolve(false);
+					}
+
+				}
+			};
+			xhr.send(jsonPayload);
+		}
+
+		catch(err) {
+			console.log("Error occurred")
+			reject(undefined);
+		}
+	});
+}
+
+function showLogin() {
+	document.getElementById("LoginOption").className = "Selected";
+	document.getElementById("registerOption").className = "Unselected";
+	document.getElementById("registerDiv").style.display = "none";
+	document.getElementById("LoginDiv").style.display = "block";
+}
+
+function showRegister() {
+	document.getElementById("LoginOption").className = "Unselected";
+	document.getElementById("registerOption").className = "Selected";
+	document.getElementById("registerDiv").style.display = "block";
+	document.getElementById("LoginDiv").style.display = "none";
+}
+
+function disable(btn) {
+	btn.className = "DisabledButton";
+}
+
+function enable(btn) {
+	btn.className = "Button";
+}
+
+function setup() {
+	showLogin();
+	disable(document.getElementById("registerButton"));
 }
