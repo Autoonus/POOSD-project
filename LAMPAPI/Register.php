@@ -21,10 +21,10 @@
 		$stmt->bind_param("s", $Login);
 		$stmt->execute();
 		$result = $stmt->get_result();
-    	$stmt->close();
 
 		if($row = $result->fetch_assoc()){
 			//This runs when a result is successfully fetched (I.E. Username taken)
+			$stmt->close();
 			$conn->close();
 			returnWithError("Username already taken.");
 		}
