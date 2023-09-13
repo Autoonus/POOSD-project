@@ -1,7 +1,7 @@
 # POOSD-project
-just setting this up for now
+The Otter
 
-Check out our [website](http://146.190.35.203/).
+Check out our [website](http://the-otter.com/).
 
 ## Contributors
 [Alex](https://github.com/AlexChark)
