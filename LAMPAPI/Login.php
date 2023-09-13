@@ -20,7 +20,8 @@
 		$result = $stmt->get_result();
 
 		if( $row = $result->fetch_assoc()  )
-		{
+		{	
+			updateLoginTime($row['ID']);
 			returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID'] );
 		}
 		else
@@ -32,6 +33,12 @@
 		$conn->close();
 	}
 	
+	function updateLoginTime($ID) {
+		$stmt = $conn->prepare("UPDATE Contacts SET DateLastLoggedIn = NOW() WHERE ID = ?");
+		$stmt->bind_param("i", $ID);
+		$stmt->execute();
+	}
+
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);

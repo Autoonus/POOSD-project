@@ -6,43 +6,42 @@
 	//input data to register
 	$FirstName = $inData["FirstName"];
 	$LastName = $inData["LastName"];
-  $Login = $inData["Login"];					
+  	$Login = $inData["Login"];					
 	$Password = $inData["Password"];
 	
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
-	if( $conn->connect_error )
-	{
+	if( $conn->connect_error ) {
 		returnWithError( $conn->connect_error );
 	}
-	else
-	{
+
+	else {
 		//check if the login has been used before
 		$stmt = $conn->prepare("SELECT * FROM Users WHERE Login = BINARY ?");	
 		$stmt->bind_param("s", $Login);
 		$stmt->execute();
 		$result = $stmt->get_result();
-    $stmt->close();
+    	$stmt->close();
 
 		if($row = $result->fetch_assoc()){
 			//This runs when a result is successfully fetched (I.E. Username taken)
 			$conn->close();
 			returnWithError("Username already taken.");
 		}
+
 		else {
 			//Runs if username not taken
 			//creates the login if login was not taken
-      $query = "INSERT INTO Users (FirstName,LastName,Login,Password) VALUES (?, ?, ?, ?)";
-      $stmt = $conn->prepare($query);
+      		$query = "INSERT INTO Users (FirstName,LastName,Login,Password) VALUES (?, ?, ?, ?)";
+      		$stmt = $conn->prepare($query);
 			$stmt->bind_param("ssss", $FirstName, $LastName, $Login, $Password);
 			$stmt->execute();
       
-			$id = $conn->insert_id;
+			$ID = $conn->insert_id;
 			$stmt->close();
-      $conn->close();
+      		$conn->close();
 
-			returnWithInfo($FirstName, $LastName, $id);
-			
+			returnWithInfo($FirstName, $LastName, $ID);
 		}
 	}
 	
@@ -65,7 +64,7 @@
 	
 	function returnWithInfo( $FirstName, $LastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $FirstName . '","lastName":"' . $LastName . '","error":""}';
+		$retValue = '{"ID":' . $ID . ',"FirstName":"' . $FirstName . '","LastName":"' . $LastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
