@@ -26,11 +26,13 @@
 #usernameRequirementsDiv {
     display: none;
     width: fit-content;
+    margin: auto;
 }
 
 #passwordRequirementsDiv {
     display: none;
     width: fit-content;
+    margin: auto;
 }
 
 .InputBox {
@@ -140,7 +142,7 @@
 
 .EntryLabel {
     width: 15%;
-
+    min-width: 90;
     box-sizing: border-box;
     display:inline-block;
     text-align:left;
