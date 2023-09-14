@@ -42,7 +42,11 @@ function login(Login, Password) {
 					return;
 				}
 
-				setLoginCookie(jsonObject.FirstName, jsonObject.LastName, jsonObject.ID);
+				FirstName = jsonObject.FirstName;
+				LastName = jsonObject.LastName;
+				ID = jsonObject.ID;
+
+				setLoginCookie();
 
 				window.location.href = "contacts.html";
 			}
@@ -57,33 +61,30 @@ function login(Login, Password) {
 
 }
 
-function setLoginCookie(FirstName, LastName, ID) {
+function setLoginCookie() {
 	const d = new Date();
 	const minutesTillExpiration = 20;
 	d.setTime(d.getTime() + (minutesTillExpiration*60*1000));
 
 	let expires = "expires="+ d.toUTCString();
-	console.log("FirstName=" + FirstName + ",LastName=" + LastName + ",ID=" + ID.toString() + ";" + expires);
-	document.cookie = "FirstName=" + FirstName + ",LastName=" + LastName + ",ID=" + ID.toString() + ";" + expires;
+	var data = {};
+	data.FirstName = FirstName;
+	data.LastName = LastName;
+	data.ID = ID;
+
+	document.cookie = JSON.stringify(data) + expires;
 }
 
 function readLoginCookie() {
-	let ck = document.cookie;
-	let fields = ck.split(",");
-
-	FirstName = "";
-	LastName = "";
-	ID = 0;
-
-	for (var i=0; i<fields.length; i++) {
-		let key = fields[i].trim().split("=");
-		if (key[0] == "FirstName") {
-			FirstName = key[1];
-		} else if (key[0] == "LastName") {
-			LastName = key[1];
-		} else if (key[0] == "ID") {
-			ID = parseInt(key[1]);
-		}
+	if (document.cookie.length != 0) {
+		var obj = JSON.parse(document.cookie);
+		FirstName = obj.FirstName;
+		LastName = obj.LastName;
+		ID = parseInt(obj.ID);
+	} else {
+		FirstName = "";
+		LastName = "";
+		ID = 0;
 	}
 }
 
