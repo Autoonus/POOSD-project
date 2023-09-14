@@ -72,7 +72,7 @@ function setLoginCookie() {
 	data.LastName = LastName;
 	data.ID = ID;
 
-	Cookies.set('') = 'object=' + JSON.stringify(data) + expires;
+	document.cookie = "object=" + JSON.stringify(data) + expires;
 }
 
 function getCookie(cname) {
