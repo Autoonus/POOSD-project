@@ -25,10 +25,12 @@
 
 #usernameRequirementsDiv {
     display: none;
+    width: auto;
 }
 
 #passwordRequirementsDiv {
     display: none;
+    width: auto;
 }
 
 .InputBox {
@@ -138,8 +140,6 @@
 
 .EntryLabel {
     width: 80%;
-    padding: 10px;
-    margin: 10px;
 
     box-sizing: border-box;
     display:inline-block;
@@ -151,12 +151,14 @@
 
 .valid {
     border-radius: 10px;
-    font-size: 24px;
+    font-size: 18px;
     outline: rgb(0, 255, 0) solid 2px;
+    background-color: white;
 }
 
 .invalid {
     border-radius: 10px;
-    font-size: 24px;
+    font-size: 18px;
     outline: rgb(255, 0, 0) solid 2px;
+    background-color: white;
 }
