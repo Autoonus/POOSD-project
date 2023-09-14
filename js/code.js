@@ -63,12 +63,13 @@ function setLoginCookie(FirstName, LastName, ID) {
 	d.setTime(d.getTime() + (minutesTillExpiration*60*1000));
 
 	let expires = "expires="+ d.toUTCString();
-
+	console.log("FirstName=" + FirstName + ";LastName=" + LastName + ";ID=" + ID.toString() + ";" + expires + "; path=/");
 	document.cookie = "FirstName=" + FirstName + ";LastName=" + LastName + ";ID=" + ID.toString() + ";" + expires + "; path=/";
 }
 
 function getCookieVal(valName) {
 	let name = valName + "=";
+	console.log(document.cookie);
 	let ca = document.cookie.split(';');
 	for(let i = 0; i < ca.length; i++) {
 	  let c = ca[i];
