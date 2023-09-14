@@ -63,47 +63,27 @@ function setLoginCookie(FirstName, LastName, ID) {
 	d.setTime(d.getTime() + (minutesTillExpiration*60*1000));
 
 	let expires = "expires="+ d.toUTCString();
-	console.log("FirstName=" + FirstName + ";LastName=" + LastName + ";ID=" + ID.toString() + ";" + expires + "; path=/");
-	document.cookie = "FirstName=" + FirstName + ";LastName=" + LastName + ";ID=" + ID.toString() + ";" + expires + "; path=/";
-}
-
-function getCookieVal(valName) {
-	let name = valName + "=";
-	console.log(document.cookie);
-	let ca = document.cookie.split(';');
-	for(let i = 0; i < ca.length; i++) {
-	  let c = ca[i];
-	  while (c.charAt(0) == ' ') {
-		c = c.substring(1);
-	  }
-	  if (c.indexOf(name) == 0) {
-		return c.substring(name.length, c.length);
-	  }
-	}
-	return "";
+	console.log("FirstName=" + FirstName + ",LastName=" + LastName + ",ID=" + ID.toString() + ";" + expires);
+	document.cookie = "FirstName=" + FirstName + ",LastName=" + LastName + ",ID=" + ID.toString() + ";" + expires;
 }
 
 function readLoginCookie() {
-	let tempID = getCookieVal("ID");
-	let tempFirstName = getCookieVal("FirstName");
-	let tempLastName = getCookieVal("LastName");
+	let ck = document.cookie;
+	let fields = data.split(",");
 
-	if (tempID != "") {
-		ID = parseInt(tempID);
-	} else {
-		ID = 0;
-	}
+	FirstName = "";
+	LastName = "";
+	ID = 0;
 
-	if (tempFirstName != "") {
-		FirstName = tempFirstName;
-	} else {
-		FirstName = "";
-	}
-
-	if (tempLastName != "") {
-		LastName = tempLastName;
-	} else {
-		LastName = "";
+	for (var i=0; i<fields.length; i++) {
+		let key = fields[i].trim().split("=");
+		if (key[0] == "FirstName") {
+			FirstName = key[1];
+		} else if (key[0] == "LastName") {
+			LastName = key[1];
+		} else if (key[0] == "ID") {
+			ID = parseInt(key[1]);
+		}
 	}
 }
 
