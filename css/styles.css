@@ -136,10 +136,27 @@
     color: white;
 }
 
+.EntryLabel {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+
+    box-sizing: border-box;
+    display:inline-block;
+    text-align:left;
+
+    font-size: 24px;
+    color: #4501ff;
+}
+
 .valid {
-    color: rgb(0, 255, 0);
+    border-radius: 10px;
+    font-size: 24px;
+    outline: rgb(0, 255, 0) solid 2px;
 }
 
 .invalid {
-    color: rgb(255, 0, 0);
+    border-radius: 10px;
+    font-size: 24px;
+    outline: rgb(255, 0, 0) solid 2px;
 }
