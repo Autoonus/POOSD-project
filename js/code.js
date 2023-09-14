@@ -59,6 +59,7 @@ function login(Login, Password) {
 
 function setLoginCookie(FirstName, LastName, ID) {
 	const d = new Date();
+	const minutesTillExpiration = 20;
 	d.setTime(d.getTime() + (minutesTillExpiration*60*1000));
 
 	let expires = "expires="+ d.toUTCString();
