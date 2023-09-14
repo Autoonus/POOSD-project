@@ -15,7 +15,7 @@ function doLogin() {
 }
 
 function login(Login, Password) {
-	UserID = 0;
+	ID = 0;
 	FirstName = "";
 	LastName = "";
 	
@@ -64,7 +64,7 @@ function setLoginCookie(FirstName, LastName, ID) {
 
 	let expires = "expires="+ d.toUTCString();
 
-	document.cookie = "FirstName=" + FirstName + "; LastName=" + LastName + "; ID= " + ID.toString() + "; " + expires + "; path=/";
+	document.cookie = "FirstName=" + FirstName + ";LastName=" + LastName + ";ID=" + ID.toString() + ";" + expires + "; path=/";
 }
 
 function getCookieVal(valName) {
@@ -112,7 +112,7 @@ function register() {
 		return;
 	}
 
-	UserID = 0;
+	ID = 0;
 	FirstName = "";
 	LastName = "";
 	
