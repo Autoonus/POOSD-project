@@ -66,18 +66,35 @@ function setLoginCookie() {
 	const minutesTillExpiration = 20;
 	d.setTime(d.getTime() + (minutesTillExpiration*60*1000));
 
-	let expires = "expires="+ d.toUTCString();
+	let expires = "; expires="+ d.toUTCString();
 	var data = {};
 	data.FirstName = FirstName;
 	data.LastName = LastName;
 	data.ID = ID;
 
-	document.cookie = JSON.stringify(data) + expires;
+	Cookies.set('') = 'object=' + JSON.stringify(data) + expires;
 }
+
+function getCookie(cname) {
+	let name = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(';');
+	for(let i = 0; i <ca.length; i++) {
+	  let c = ca[i];
+	  while (c.charAt(0) == ' ') {
+		c = c.substring(1);
+	  }
+	  if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+	  }
+	}
+	return "";
+  }
 
 function readLoginCookie() {
 	if (document.cookie.length != 0) {
-		var obj = JSON.parse(document.cookie);
+		let jsonString = getCookie("object");
+		var obj = JSON.parse(jsonString);
 		FirstName = obj.FirstName;
 		LastName = obj.LastName;
 		ID = parseInt(obj.ID);
