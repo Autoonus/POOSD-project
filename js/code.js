@@ -110,10 +110,6 @@ function register() {
 		document.getElementById("registerResult").innerHTML = "Please Meet Username and Password Criteria";
 		return;
 	}
-
-	ID = 0;
-	FirstName = "";
-	LastName = "";
 	
 	let Login = document.getElementById("newUser").value;
 	let Password = document.getElementById("newPassword").value;
