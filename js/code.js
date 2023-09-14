@@ -69,7 +69,7 @@ function setLoginCookie(FirstName, LastName, ID) {
 
 function readLoginCookie() {
 	let ck = document.cookie;
-	let fields = data.split(",");
+	let fields = ck.split(",");
 
 	FirstName = "";
 	LastName = "";
