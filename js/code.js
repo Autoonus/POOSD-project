@@ -32,6 +32,7 @@ function doLogin() {
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				UserID = jsonObject.id;
+				document.cookie = "UserID=" + UserID + ";";
 		
 				if( UserID < 1 )
 				{		
@@ -40,8 +41,10 @@ function doLogin() {
 				}
 		
 				FirstName = jsonObject.FirstName;
+				document.cookie = "FirstName=" + FirstName + ";";
 				LastName = jsonObject.LastName;
-	
+				document.cookie = "LastName=" + LastName + ";";
+				
 				window.location.href = "contacts.html";
 			}
 		};
