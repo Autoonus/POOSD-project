@@ -1,9 +1,9 @@
 const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
 
-let userID = 0;
-let firstName = "";
-let lastName = "";
+let ID = 0;
+let FirstName = "";
+let LastName = "";
 
 function doLogin() {
 	let Login = document.getElementById("Login").value;
@@ -15,9 +15,9 @@ function doLogin() {
 }
 
 function login(Login, Password) {
-	userID = 0;
-	firstName = "";
-	lastName = "";
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
 	
 	let tmp = {Login:Login, Password:Password};
 	let jsonPayload = JSON.stringify(tmp);
@@ -36,7 +36,7 @@ function login(Login, Password) {
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 		
-				if( UserID < 1 ) 
+				if( jsonObject.ID < 1 ) 
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
@@ -67,7 +67,7 @@ function setLoginCookie(FirstName, LastName, ID) {
 }
 
 function getCookieVal(valName) {
-	let name = Valname + "=";
+	let name = valName + "=";
 	let ca = document.cookie.split(';');
 	for(let i = 0; i < ca.length; i++) {
 	  let c = ca[i];
@@ -111,9 +111,9 @@ function register() {
 		return;
 	}
 
-	userID = 0;
-	firstName = "";
-	lastName = "";
+	UserID = 0;
+	FirstName = "";
+	LastName = "";
 	
 	let Login = document.getElementById("newUser").value;
 	let Password = document.getElementById("newPassword").value;
