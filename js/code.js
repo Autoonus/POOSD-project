@@ -184,6 +184,50 @@ function isAvailable(Login, userAvailable) {
 	});
 }
 
+function searchContact(){
+	return new Promise((resolve, reject) => {
+		let search = document.getElementById("searchColorButton").value;
+		
+		// gets rid of white space and makes the search into an array
+		// search = search.split(/(\s+)/).filter( e => e.trim().length > 0);
+
+		// if(search.length == 1){
+		// 	let tmp = {FirstName:search[0]};
+		// }
+		// else if(search.length > 1){
+		// 	let tmp = {FirstName:search[0], LastName:search[1]};
+		// }
+
+		let tmp  = {Search:search};
+		let jsonPayload = JSON.stringify(tmp);
+		
+		let url = urlBase + '/SearchContact.' + extension;
+
+		let xhr = new XMLHttpRequest();
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+		try
+		{
+			xhr.onreadystatechange = function() 
+			{
+				if (this.readyState == 4 && this.status == 200) 
+				{
+					let jsonObject = JSON.parse( xhr.responseText );
+					
+					
+				}
+			};
+			xhr.send(jsonPayload);
+		}
+
+		catch(err)
+		{
+			reject(undefined);
+		}
+	});
+}
+
 function showLogin() {
 	document.getElementById("loginOption").className = "Selected";
 	document.getElementById("registerOption").className = "Unselected";
