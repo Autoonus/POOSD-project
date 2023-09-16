@@ -25,16 +25,126 @@
 <div id="accessUIDiv">
 	<br />
 
-	<input type="text" id="searchText" placeholder="Search for the contact"/>
-	<button type="button" id="searchColorButton" class="buttons" onclick="searchContact();"> Search Contact </button><br />
+	<input type="text" id="searchText" placeholder="Color To Search For"/>
+	<button type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search Color </button><br />
 	<span id="colorSearchResult"></span>
 	<p id="colorList">
 	</p><br /><br />
 
-	<input type="text" id="colorText" placeholder="Add the contact">
+	<input type="text" id="colorText" placeholder="Color To Add">
 	<button type="button" id="addColorButton" class="buttons" onclick="addColor();"> Add Color </button><br />
 	<span id="colorAddResult"></span>
 </div>
+<table border ="1" cellpadding = "5" cellspacing = "0" id = "contacts">
+            
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Phone Number</th>
+		<th>Email</th>
+		<th>User ID</th>
+		<th><button type = "button">Add Contact</button></th>
+	</tr>
+	<tr id = "1">
+		<td>John</td>
+		<td>Doe</td>
+		<td>111-111-1111</td>
+		<td>johndoe@gmail.com</td>
+		<td>1</td>
+		<td><button type = "button" onclick="edit(1)">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+	<tr id = "2">
+		<td>John</td>
+		<td>Doe</td>
+		<td>187-982-2300</td>
+		<td>jd123456@ucf.edu</td>
+		<td>5</td>
+		<td><button type = "button" onclick="edit(2)">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Doe</td>
+		<td>187-982-2300</td>
+		<td>jd123456@ucf.edu</td>
+		<td>6</td>
+		<td><button type = "button">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Doe</td>
+		<td>187-982-2300</td>
+		<td>jd123456@ucf.edu</td>
+		<td>7</td>
+		<td><button type = "button">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Doe</td>
+		<td>187-982-2300</td>
+		<td>jd123456@ucf.edu</td>
+		<td>8</td>
+		<td><button type = "button">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Doe</td>
+		<td>187-982-2300</td>
+		<td>jd123456@ucf.edu</td>
+		<td>9</td>
+		<td><button type = "button">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Doe</td>
+		<td>187-982-2300</td>
+		<td>jd123456@ucf.edu</td>
+		<td>10</td>
+		<td><button type = "button">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Doe</td>
+		<td>187-982-2300</td>
+		<td>jd123456@ucf.edu</td>
+		<td>11</td>
+		<td><button type = "button">Edit</button>
+			<button type = "button">Delete</button></td>
+	</tr>
+</table>
+<script>
+	var table = document.getElementById('contacts')
+	function addContact()
+	{
+		alert("this works");
+	}
+	function deleteContact()
+	{
+		alert("this works");
+	}
+	//table.addEventListener("click", addContact);
+	table.addEventListener("click", deleteContact)
+	/*function edit(id)
+	{
+		var row = table.getElementsById(id)
+		for(var i = 0; i < row.length; i++){
+			row[i].onclick = function(){
+				var input = document.createElement('input');
+				input.setAttribute('type','text');
+				input.value = this.innerHTML;
+				input.style.backgroundColor = grey;
+				this.innerHTML = '';
+
+			}
+		}
+	}*/
+</script>
 
 </body>
 </html>
