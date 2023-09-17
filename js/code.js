@@ -243,7 +243,7 @@ function showRegister() {
 }
 
 function showHeader() {
-	document.getElementById("welcomeHeader").innerHTML = "Welcome, " + FirstName + " " + LastName;
+	document.getElementById("welcomeHeader").innerHTML = "Welcome, " + FirstName + " " + LastName + "!";
 }
 
 function disable(btn) {
