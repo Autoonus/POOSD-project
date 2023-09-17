@@ -19,14 +19,13 @@
 
 <div id="loggedInDiv">
 	<h1 id="welcomeHeader">Cookie Error<h1><br />
+	<input type="text" id="searchText" placeholder="Color To Search For"/>
+	<button type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search Color </button>
 	<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
 </div>
 
 <div id="accessUIDiv">
 	<br />
-
-	<input type="text" id="searchText" placeholder="Color To Search For"/>
-	<button type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search Color </button><br />
 	<span id="colorSearchResult"></span>
 	<p id="colorList">
 	</p><br /><br />
