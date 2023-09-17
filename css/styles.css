@@ -40,6 +40,14 @@
     justify-content: space-between;
 }
 
+#controlContactDiv {
+    border-bottom: 3px solid #0178ff;
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
 #loggedInDiv {
     border-bottom: 3px solid #0178ff;
     width: 70%;
