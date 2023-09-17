@@ -18,10 +18,11 @@
 	
 <div id="contactDiv">
 	<div id="controlDiv">
-		<input type="text" id="searchText" placeholder="Contact To Search For"/>
-		<button type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search Contacts </button>
-		<button type="button" id="addColorButton" class="buttons" onclick="addColor();"> Add Contacts </button>
-		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
+		<label class="EntryLabel">Search:</label>
+		<input class="InputBox" type="text" id="searchText" placeholder="Contact To Search For"/>
+		<button class="Selected" type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search Contacts </button>
+		<button class="Unselected" type="button" id="addColorButton" class="buttons" onclick="addColor();"> Add Contacts </button>
+		<button class="Selected" type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
 	</div>
 
 	<div id="addContactDiv">
