@@ -14,97 +14,24 @@
 	
 </head>
 <body>
-<h1 id="welcomeHeader">Cookie Error<h1><br />
-<div id="containerContactsDiv">
-	<input type="text" id="searchText" placeholder="Contact To Search For"/>
-	<button type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search Contacts </button>
-	<button type="button" id="addColorButton" class="buttons" onclick="addColor();"> Add Contacts </button>
-	<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
-	<div id="tableDiv">
-		<table border ="1" cellpadding = "5" cellspacing = "0" id = "contacts">
-		            
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Phone Number</th>
-				<th>Email</th>
-				<th>User ID</th>
-				<th><button type = "button">Add Contact</button></th>
-			</tr>
-			<tr id = "1">
-				<td>John</td>
-				<td>Doe</td>
-				<td>111-111-1111</td>
-				<td>johndoe@gmail.com</td>
-				<td>1</td>
-				<td><button type = "button" onclick="edit(1)">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-			<tr id = "2">
-				<td>John</td>
-				<td>Doe</td>
-				<td>187-982-2300</td>
-				<td>jd123456@ucf.edu</td>
-				<td>5</td>
-				<td><button type = "button" onclick="edit(2)">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-			<tr>
-				<td>John</td>
-				<td>Doe</td>
-				<td>187-982-2300</td>
-				<td>jd123456@ucf.edu</td>
-				<td>6</td>
-				<td><button type = "button">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-			<tr>
-				<td>John</td>
-				<td>Doe</td>
-				<td>187-982-2300</td>
-				<td>jd123456@ucf.edu</td>
-				<td>7</td>
-				<td><button type = "button">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-			<tr>
-				<td>John</td>
-				<td>Doe</td>
-				<td>187-982-2300</td>
-				<td>jd123456@ucf.edu</td>
-				<td>8</td>
-				<td><button type = "button">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-			<tr>
-				<td>John</td>
-				<td>Doe</td>
-				<td>187-982-2300</td>
-				<td>jd123456@ucf.edu</td>
-				<td>9</td>
-				<td><button type = "button">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-			<tr>
-				<td>John</td>
-				<td>Doe</td>
-				<td>187-982-2300</td>
-				<td>jd123456@ucf.edu</td>
-				<td>10</td>
-				<td><button type = "button">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-			<tr>
-				<td>John</td>
-				<td>Doe</td>
-				<td>187-982-2300</td>
-				<td>jd123456@ucf.edu</td>
-				<td>11</td>
-				<td><button type = "button">Edit</button>
-					<button type = "button">Delete</button></td>
-			</tr>
-		</table>
+<h1 id="welcomeHeader">Cookie Error<h1>
+	
+<div id="contactDiv">
+	<div id="controlDiv">
+		<input type="text" id="searchText" placeholder="Contact To Search For"/>
+		<button type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search Contacts </button>
+		<button type="button" id="addColorButton" class="buttons" onclick="addColor();"> Add Contacts </button>
+		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
 	</div>
+
+	<div id="addContactDiv">
+		
+	</div>
+
+	<div id="contactTableDiv">
+		
+	</div>
+	
 </div>
 <script>
 	var table = document.getElementById('contacts')
