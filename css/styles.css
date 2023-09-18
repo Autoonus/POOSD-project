@@ -179,6 +179,18 @@
     box-sizing: border-box;
     display:inline-block;
     text-align:left;
+    margin: auto;
+
+    font-size: 20px;
+    color: #4501ff;
+}
+
+.AddLabel {
+    min-width: 200;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
 
     font-size: 20px;
     color: #4501ff;
@@ -200,4 +212,12 @@
     outline: rgb(255, 0, 0) solid 2px;
     background-color: white;
     padding: 5px 10px;
+}
+
+.Hidden {
+    display: none;
+}
+
+.Showing{
+    display: inline-block;
 }

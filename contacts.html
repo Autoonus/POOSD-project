@@ -20,30 +20,34 @@
 	<div id="controlContactDiv">
 		<label class="EntryLabel">Search:</label>
 		<input class="InputBox" type="text" id="searchText" placeholder="Contact To Search For"/>
-		<button class="Selected" type="button" id="searchColorButton" class="buttons" onclick="searchColor();"> Search </button>
-		<button class="Unselected" type="button" id="addColorButton" class="buttons" onclick="addColor();"> Add </button>
+		<button class="Selected" type="button" id="searchContactButton" class="buttons" onclick="searchColor();"> Search </button>
+		<button class="Unselected" type="button" id="addContactButton" class="buttons" onclick="showAdd();"> Add </button>
 		<button class="Unselected" type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
 	</div>
 
-	<div id="addContactDiv">
+	<div id="addContactDiv" class="Hidden">
+		<label class="AddLabel">First Name:</label>
+		<input class="InputBox" type="text" id="addFirstName" placeholder="First Name" /><br />
 		
+		<label class="AddLabel">Last Name:</label>
+		<input class="InputBox" type="text" id="addLastName" placeholder="Last Name"/><br />
+		
+		<label class="AddLabel">Phone Number:</label>
+		<input class="InputBox" type="text" id="addPhoneNumber" placeholder="Phone Number" /><br />
+		
+		<label class="AddLabel">Email:</label>
+		<input class="InputBox" type="text" id="addEmail" placeholder="Email"/><br />
+		
+		<button type="button" id="confirmContactButton" class="Button" onclick="addContact()">Add Contact</button>
 	</div>
 
-	<div id="contactTableDiv">
+	<div id="contactTableDiv" class="Hidden">
 		
 	</div>
 	
 </div>
 <script>
 	var table = document.getElementById('contacts')
-	function addContact()
-	{
-		alert("this works");
-	}
-	function deleteContact()
-	{
-		alert("this works");
-	}
 	//table.addEventListener("click", addContact);
 	table.addEventListener("click", deleteContact)
 	/*function edit(id)

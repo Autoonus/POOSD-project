@@ -198,8 +198,8 @@ function searchContact(){
 		// 	let tmp = {FirstName:search[0], LastName:search[1]};
 		// }
 
-		let tmp  = {Search:search};
-		let jsonPayload = JSON.stringify(tmp);
+		let temp  = {Search:search};
+		let jsonPayload = JSON.stringify(temp);
 		
 		let url = urlBase + '/SearchContact.' + extension;
 
@@ -213,8 +213,7 @@ function searchContact(){
 			{
 				if (this.readyState == 4 && this.status == 200) 
 				{
-					let jsonObject = JSON.parse( xhr.responseText );
-					
+
 					
 				}
 			};
@@ -226,6 +225,55 @@ function searchContact(){
 			reject(undefined);
 		}
 	});
+}
+
+function showAdd(){
+	div = document.getElementById("addContactDiv");
+	if(div.className == "Hidden"){
+		div.className = "Showing";
+	}
+	else{
+		div.className = "Hidden";
+	}
+}
+
+function addContact(){
+	let firstName = document.getElementById("addFirstName").value;
+	let lastName = document.getElementById("addLastName").value;
+	let phone = document.getElementById("addPhoneNumber").value;
+	let email = document.getElementById("addEmail").value;
+
+	let temp = {FirstName: firstName, LastName: lastName, Phone: phone, Email: email, UserID: ID};
+
+	let jsonPayload = JSON.stringify(temp);
+	let url = urlBase + '/AddContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+				
+				document.getElementById("addFirstName").value = "";
+				document.getElementById("addLastName").value = "";
+				document.getElementById("addPhoneNumber").value = "";
+				document.getElementById("addEmail").value = "";
+				showAdd();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+
+	catch(err)
+	{
+		reject(undefined);
+	}
 }
 
 function showLogin() {
