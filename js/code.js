@@ -120,6 +120,12 @@ function readLoginCookie() {
 	}
 }
 
+function checkValidSession() {
+	if (document.cookie.length == 0) {
+		doLogout();
+	}
+}
+
 function register() {
 	if (document.getElementById("registerButton").className == "DisabledButton") {
 		document.getElementById("registerResult").innerHTML = "Please Meet Username and Password Criteria";
