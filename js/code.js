@@ -63,6 +63,19 @@ function login(Login, Password) {
 
 }
 
+function doLogout() {
+	//remove all stored variable values
+	ID = 0;
+	FirstName = "";
+	LastName = "";
+
+	//remove cookie
+	document.cookie = "object= null; expires= expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
+	//move window to index.html (login page / front page)
+	window.location.href = "index.html";
+}
+
 function setLoginCookie() {
 	const d = new Date();
 	const minutesTillExpiration = 20;
@@ -94,16 +107,16 @@ function getCookie(cname) {
   }
 
 function readLoginCookie() {
+	//If they hold a login cookie, parse cookie and store data
 	if (document.cookie.length != 0) {
 		let jsonString = getCookie("object");
 		var obj = JSON.parse(jsonString);
 		FirstName = obj.FirstName;
 		LastName = obj.LastName;
 		ID = parseInt(obj.ID);
-	} else {
-		FirstName = "";
-		LastName = "";
-		ID = 0;
+	//Else, log them out and push from the page.
+	} else { 
+		doLogout();
 	}
 }
 
