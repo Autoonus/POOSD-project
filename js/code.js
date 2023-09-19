@@ -49,6 +49,8 @@ function login(Login, Password) {
 				setLoginCookie();
 
 				window.location.href = "contacts.html";
+
+				searchContact();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -186,19 +188,9 @@ function isAvailable(Login, userAvailable) {
 
 function searchContact(){
 	return new Promise((resolve, reject) => {
-		let search = document.getElementById("searchColorButton").value;
-		
-		// gets rid of white space and makes the search into an array
-		// search = search.split(/(\s+)/).filter( e => e.trim().length > 0);
+		let search = document.getElementById("searchContactButton").value;
 
-		// if(search.length == 1){
-		// 	let tmp = {FirstName:search[0]};
-		// }
-		// else if(search.length > 1){
-		// 	let tmp = {FirstName:search[0], LastName:search[1]};
-		// }
-
-		let temp  = {Search:search};
+		let temp  = {Search:search, UserId: ID};
 		let jsonPayload = JSON.stringify(temp);
 		
 		let url = urlBase + '/SearchContact.' + extension;
@@ -213,8 +205,9 @@ function searchContact(){
 			{
 				if (this.readyState == 4 && this.status == 200) 
 				{
+					let jsonObject = JSON.parse( xhr.responseText );
 
-					
+					console.log(jsonObject);
 				}
 			};
 			xhr.send(jsonPayload);
@@ -228,12 +221,60 @@ function searchContact(){
 }
 
 function showAdd(){
-	div = document.getElementById("addContactDiv");
-	if(div.className == "Hidden"){
-		div.className = "Showing";
+	addDiv = document.getElementById("addContactDiv");
+	contactDiv = document.getElementById("contactTableDiv");
+	addButton = document.getElementById("addContactButton");
+	searchButton = document.getElementById("searchContactButton");
+	contactsButton = document.getElementById("contactsButton");
+	searchLabel = document.getElementById("searchLabel");
+	searchText = document.getElementById("searchText");
+
+	if(addDiv.className == "Hidden"){
+		addDiv.className = "Showing";
+		contactDiv.className = "Hidden";
+		addButton.className = "Selected";
+		searchButton.style.display = "none";
+		contactsButton.className = "Unselected";
+		searchLabel.style.display = "none";
+		searchText.style.display = "none";
 	}
 	else{
-		div.className = "Hidden";
+		addDiv.className = "Hidden";
+		contactDiv.className = "Showing";
+		addButton.className = "Unselected";
+		searchButton.style.display = "inline-block";
+		contactsButton.className = "Selected";
+		searchLabel.style.display = "inline-block";
+		searchText.style.display = "inline-block";
+	}
+}
+
+function showContacts(){
+	addDiv = document.getElementById("addContactDiv");
+	contactDiv = document.getElementById("contactTableDiv");
+	addButton = document.getElementById("addContactButton");
+	searchButton = document.getElementById("searchContactButton");
+	contactsButton = document.getElementById("contactsButton");
+	searchLabel = document.getElementById("searchLabel");
+	searchText = document.getElementById("searchText");
+
+	if(contactDiv.className == "Hidden"){
+		addDiv.className = "Hidden";
+		contactDiv.className = "Showing";
+		addButton.className = "Unselected";
+		searchButton.style.display = "inline-block";
+		contactsButton.className = "Selected";
+		searchLabel.style.display = "inline-block";
+		searchText.style.display = "inline-block";
+	}
+	else{
+		addDiv.className = "Showing";
+		contactDiv.className = "Hidden";
+		addButton.className = "Selected";
+		searchButton.style.display = "none";
+		contactsButton.className = "Unselected";
+		searchLabel.style.display = "none";
+		searchText.style.display = "none";
 	}
 }
 

@@ -1,3 +1,7 @@
+th, td {
+    padding: 10px;
+}
+
 #loginRegisterDiv {
 
     border-radius: 20px;

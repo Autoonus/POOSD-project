@@ -18,9 +18,10 @@
 	
 <div id="contactDiv">
 	<div id="controlContactDiv">
-		<label class="EntryLabel">Search:</label>
+		<label class="EntryLabel" id="searchLabel">Search:</label>
 		<input class="InputBox" type="text" id="searchText" placeholder="Contact To Search For"/>
-		<button class="Selected" type="button" id="searchContactButton" class="buttons" onclick="searchColor();"> Search </button>
+		<button class="Unselected" type="button" id="searchContactButton" class="buttons" onclick="searchContact();"> Search </button>
+		<button class="Selected" type="button" id="contactsButton" class="buttons" onclick="showContacts();"> Contacts </button>
 		<button class="Unselected" type="button" id="addContactButton" class="buttons" onclick="showAdd();"> Add </button>
 		<button class="Unselected" type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
 	</div>
@@ -41,15 +42,22 @@
 		<button type="button" id="confirmContactButton" class="Button" onclick="addContact()">Add Contact</button>
 	</div>
 
-	<div id="contactTableDiv" class="Hidden">
-		
+	<div id="contactTableDiv" class="Showing">
+		<table id="contactTable">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Phone</th>
+				<th>Email</th>
+			</tr>
+		</table>
 	</div>
 	
 </div>
 <script>
-	var table = document.getElementById('contacts')
+	//var table = document.getElementById('contacts')
 	//table.addEventListener("click", addContact);
-	table.addEventListener("click", deleteContact)
+	//table.addEventListener("click", deleteContact)
 	/*function edit(id)
 	{
 		var row = table.getElementsById(id)

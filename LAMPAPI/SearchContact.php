@@ -3,6 +3,7 @@
 	$inData = getRequestInfo();
 	
 	$search = $inData["Search"];
+	$userID = $inData["UserID"];
 	$searchResults = "";
 	$searchCount = 0;
 
@@ -13,9 +14,9 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
+		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE CONCAT(FirstName + ' ' + LastName) LIKE ? AND UserID=?");
 		$contactSearch = "%" . $search . "%";
-		$stmt->bind_param("sss", $contactSearch, $contactSearch, $inData["userId"]);
+		$stmt->bind_param("ss", $contactSearch, $userID);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
