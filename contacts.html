@@ -10,11 +10,10 @@
 			readLoginCookie();
 			showHeader();
 		}, false);
-		checkValidSession();
 	</script>
 	
 </head>
-<body>
+<body onpageshow="checkValidSession()">
 <h1 id="welcomeHeader">Cookie Error<h1>
 	
 <div id="contactDiv">
