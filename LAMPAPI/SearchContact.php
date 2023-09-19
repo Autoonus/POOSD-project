@@ -1,42 +1,37 @@
 <?php
-
 	$inData = getRequestInfo();
-	
+
 	$search = $inData["Search"];
-	$userID = $inData["UserID"];
+	$UserID = $inData["UserID"];
 	$searchResults = "";
-	$searchCount = 0;
+	$count = 0;
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-	if ($conn->connect_error) 
-	{
+	if ($conn->connect_error) {
+
 		returnWithError( $conn->connect_error );
-	} 
-	else
-	{
-		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE CONCAT(FirstName + ' ' + LastName) LIKE ? AND UserID=?");
-		$contactSearch = "%" . $search . "%";
-		$stmt->bind_param("ss", $contactSearch, $userID);
+
+	} else {
+
+		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
+		$search = "%" . $search . "%";
+		$stmt->bind_param("sss", $search, $search, $UserID);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
 		
-		while($row = $result->fetch_assoc())
-		{
-			if( $searchCount > 0 )
+		while($row = $result->fetch_assoc()) {
+			if( $count > 0 )
 			{
-				$searchResults .= ",";
+				$contacts  .= ",";
 			}
-			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
+			$count++;
+			$contacts .= '{"FirstName" : "'.$row["FirstName"].'", "LastName" : "'.$row["LastName"].'", "PhoneNumber" : "'. $row["PhoneNumber"]. '", "EmailAddress" : "' . $row["EmailAddress"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '"}';
 		}
 		
-		if( $searchCount == 0 )
-		{
+		if($count == 0) {
 			returnWithError( "No Contacts Found" );
-		}
-		else
-		{
+		} else {
 			returnWithInfo( $searchResults );
 		}
 		
@@ -57,7 +52,7 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"ID":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
