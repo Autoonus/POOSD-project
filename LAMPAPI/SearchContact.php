@@ -26,7 +26,7 @@
 				$contacts  .= ",";
 			}
 			$count++;
-			$contacts .= '{"FirstName" : "'.$row["FirstName"].'", "LastName" : "'.$row["LastName"].'", "PhoneNumber" : "'. $row["PhoneNumber"]. '", "EmailAddress" : "' . $row["EmailAddress"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '"}';
+			$contacts .= '{"FirstName" : "' . $row["FirstName"] . '", "LastName" : "' . $row["LastName"].'", "PhoneNumber" : "' . $row["PhoneNumber"] . '", "EmailAddress" : "' . $row["EmailAddress"] . '", "UserID" : "' . $row["UserID"] . '", "ID" : "' . $row["ID"] . '"}';
 		}
 		
 		if($count == 0) {
