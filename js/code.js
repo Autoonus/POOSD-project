@@ -1,5 +1,6 @@
 const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
+const contactMap = new Map();
 
 let ID = 0;
 let FirstName = "";
@@ -281,6 +282,41 @@ function generateButtonText(contactID, rowNum) {
 	return editButton + delButton + saveButton + cancelButton;
 }
 
+function cancelEdit(rowNum) {
+	let temp = contactMap.get(rowNum.toString());
+	let data = JSON.parse(temp);
+
+	let edit = document.getElementById("editButton" + rowNum.toString());
+	let del = document.getElementById("delButton" + rowNum.toString());
+	let save = document.getElementById("saveButton" + rowNum.toString());
+	let cancel = document.getElementById("cancelButton" + rowNum.toString());
+
+	edit.style.display = "inline-block";
+	del.style.display = "inline-block";
+	save.style.display = "none";
+	cancel.style.display = "none";
+
+	let table = document.getElementById("contactTable");
+	let row = table.rows[rowNum];
+	
+	let FirstNameCell = row.cells[0];
+	let LastNameCell = row.cells[1];
+	let PhoneCell = row.cells[2];
+	let EmailCell = row.cells[3];
+
+	let FirstName = data.FirstName;
+	let LastName = data.LastName;;
+	let Phone = data.Phone;
+	let Email = data.Email;
+
+	FirstNameCell.innerHTML = wrapCellItem(FirstName);
+	LastNameCell.innerHTML = wrapCellItem(LastName);
+	PhoneCell.innerHTML = wrapCellItem(Phone);
+	EmailCell.innerHTML = wrapCellItem(Email);
+
+	contactMap.delete(rowNum.toString());
+}
+
 function editContact(rowNum) {
 	let edit = document.getElementById("editButton" + rowNum.toString());
 	let del = document.getElementById("delButton" + rowNum.toString());
@@ -305,11 +341,14 @@ function editContact(rowNum) {
 	let Phone = PhoneCell.innerText;
 	let Email = EmailCell.innerText;
 
+	let temp  = {FirstName:FirstName, LastName:LastName, Phone:Phone, Email:Email};
+	let data = JSON.stringify(temp);
+	contactMap.set(rowNum.toString(), data);
+
 	FirstNameCell.innerHTML = "<input type='text' id='FirstName" + rowNum.toString() + "' value='" + FirstName + "'>";
 	LastNameCell.innerHTML = "<input type='text' id='LastName" + rowNum.toString() + "' value='" + LastName + "'>";
 	PhoneCell.innerHTML = "<input type='text' id='Phone" + rowNum.toString() + "' value='" + Phone + "'>";
 	EmailCell.innerHTML = "<input type='text' id='Email" + rowNum.toString() + "' value='" + Email + "'>";
-	
 }
 
 function saveContact(rowNum, contactID) {
@@ -342,6 +381,7 @@ function saveContact(rowNum, contactID) {
 	EmailCell.innerHTML = wrapCellItem(Email);
 
 	updateContact(FirstName, LastName, Phone, Email, contactID);
+	contactMap.delete(rowNum.toString());
 }
 
 function wrapCellItem(item) {
