@@ -209,7 +209,7 @@ function searchContact(){
 	return new Promise((resolve, reject) => {
 		let search = document.getElementById("searchContactButton").value;
 
-		let temp  = {Search:search, UserId: ID};
+		let temp  = {Search:search, UserID: ID};
 		let jsonPayload = JSON.stringify(temp);
 		
 		let url = urlBase + '/SearchContact.' + extension;
@@ -225,8 +225,38 @@ function searchContact(){
 				if (this.readyState == 4 && this.status == 200) 
 				{
 					let jsonObject = JSON.parse( xhr.responseText );
-
+					let table = document.getElementById("contactTable");
 					console.log(jsonObject);
+
+					table.innerHTML = "";
+
+					let header = table.createTHead();
+					let headRow = header.insertRow(0);
+
+					let headCell1 = headRow.insertCell(0);
+					let headCell2 = headRow.insertCell(1);
+					let headCell3 = headRow.insertCell(2);
+					let headCell4 = headRow.insertCell(3);
+
+					headCell1.innerHTML = "First Name";
+					headCell2.innerHTML = "Last Name";
+					headCell3.innerHTML = "Phone Number";
+					headCell4.innerHTML = "Email Address";
+
+					for(let i = 0; i < jsonObject.results.length; ++i){
+						let row = table.insertRow();
+						let cell1 = row.insertCell(0);
+						let cell2 = row.insertCell(1);
+						let cell3 = row.insertCell(2);
+						let cell4 = row.insertCell(3);
+
+						cell1.innerHTML = jsonObject.results[i].FirstName;
+						cell2.innerHTML = jsonObject.results[i].LastName;
+						cell3.innerHTML = jsonObject.results[i].PhoneNumber;
+						cell4.innerHTML = jsonObject.results[i].EmailAddress;
+					}
+
+					resolve(true);
 				}
 			};
 			xhr.send(jsonPayload);
@@ -257,15 +287,6 @@ function showAdd(){
 		searchLabel.style.display = "none";
 		searchText.style.display = "none";
 	}
-	else{
-		addDiv.className = "Hidden";
-		contactDiv.className = "Showing";
-		addButton.className = "Unselected";
-		searchButton.style.display = "inline-block";
-		contactsButton.className = "Selected";
-		searchLabel.style.display = "inline-block";
-		searchText.style.display = "inline-block";
-	}
 }
 
 function showContacts(){
@@ -285,15 +306,6 @@ function showContacts(){
 		contactsButton.className = "Selected";
 		searchLabel.style.display = "inline-block";
 		searchText.style.display = "inline-block";
-	}
-	else{
-		addDiv.className = "Showing";
-		contactDiv.className = "Hidden";
-		addButton.className = "Selected";
-		searchButton.style.display = "none";
-		contactsButton.className = "Unselected";
-		searchLabel.style.display = "none";
-		searchText.style.display = "none";
 	}
 }
 
@@ -325,6 +337,7 @@ function addContact(){
 				document.getElementById("addPhoneNumber").value = "";
 				document.getElementById("addEmail").value = "";
 				showAdd();
+
 			}
 		};
 		xhr.send(jsonPayload);
@@ -332,7 +345,7 @@ function addContact(){
 
 	catch(err)
 	{
-		reject(undefined);
+		console.log("Search Error");
 	}
 }
 

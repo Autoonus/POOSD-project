@@ -15,7 +15,7 @@
 
 		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID=?");
 		$search = "%" . $search . "%";
-		$stmt->bind_param("sss", $search, $search, $UserID);
+		$stmt->bind_param("ssi", $search, $search, $UserID);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
@@ -26,13 +26,13 @@
 				$contacts  .= ",";
 			}
 			$count++;
-			$contacts .= '{"FirstName" : "' . $row["FirstName"] . '", "LastName" : "' . $row["LastName"].'", "PhoneNumber" : "' . $row["PhoneNumber"] . '", "EmailAddress" : "' . $row["EmailAddress"] . '", "UserID" : "' . $row["UserID"] . '", "ID" : "' . $row["ID"] . '"}';
+			$contacts .= '{"FirstName" : "' . $row["FirstName"] . '", "LastName" : "' . $row["LastName"].'", "PhoneNumber" : "' . $row["Phone"] . '", "EmailAddress" : "' . $row["Email"] . '", "UserID" : "' . $row["UserID"] . '", "ID" : "' . $row["ID"] . '"}';
 		}
 		
 		if($count == 0) {
 			returnWithError( "No Contacts Found" );
 		} else {
-			returnWithInfo( $searchResults );
+			returnWithInfo( $contacts );
 		}
 		
 		$stmt->close();
