@@ -2,6 +2,8 @@ const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
 const contactMap = new Map();
 
+let addFlag = 0;
+
 let ID = 0;
 let FirstName = "";
 let LastName = "";
@@ -297,7 +299,7 @@ function cancelEdit(rowNum) {
 	cancel.style.display = "none";
 
 	let table = document.getElementById("contactTable");
-	let row = table.rows[rowNum];
+	let row = table.rows[rowNum + addFlag];
 	
 	let FirstNameCell = row.cells[0];
 	let LastNameCell = row.cells[1];
@@ -329,7 +331,7 @@ function editContact(rowNum) {
 	cancel.style.display = "inline-block";
 
 	let table = document.getElementById("contactTable");
-	let row = table.rows[rowNum];
+	let row = table.rows[rowNum + addFlag];
 	
 	let FirstNameCell = row.cells[0];
 	let LastNameCell = row.cells[1];
@@ -363,7 +365,7 @@ function saveContact(rowNum, contactID) {
 	cancel.style.display = "none";
 
 	let table = document.getElementById("contactTable");
-	let row = table.rows[rowNum];
+	let row = table.rows[rowNum + addFlag];
 	
 	let FirstNameCell = row.cells[0];
 	let LastNameCell = row.cells[1];
@@ -446,6 +448,7 @@ function deleteContact(contactID) {
 	}
 }
 
+/*
 function showAdd(){
 	addDiv = document.getElementById("addContactDiv");
 	contactDiv = document.getElementById("contactTableDiv");
@@ -464,7 +467,7 @@ function showAdd(){
 		searchLabel.style.display = "none";
 		searchText.style.display = "none";
 	}
-}
+}*/
 
 function showContacts(){
 	addDiv = document.getElementById("addContactDiv");
@@ -486,6 +489,44 @@ function showContacts(){
 	}
 }
 
+function showTableAdd() {
+	//Don't add more than one empty row when adding a contact
+	if (addFlag == 1) {
+		return;
+	}
+
+	let table = document.getElementById("contactTable");
+	let addRow = table.insertRow(0);
+
+	addFlag = 1;
+
+	let cell1 = row.insertCell(0);
+	let cell2 = row.insertCell(1);
+	let cell3 = row.insertCell(2);
+	let cell4 = row.insertCell(3);
+	let cell5 = row.insertCell(4);
+
+	cell1.innerHTML = "<input type='text' id='addFirstName' placeholder='First Name'>"
+	cell2.innerHTML = "<input type='text' id='addLastName' placeholder='Last Name'>"
+	cell3.innerHTML = "<input type='text' id='addPhone' placeholder='Phone'>"
+	cell4.innerHTML = "<input type='text' id='addEmail' placeholder='Email'>"
+	
+	let addConfirm = "<button class='Selected' id='addConfirm' type='button' class='buttons' onclick='commitAdd();'>Add</button> ";
+	let addCancel = "<button class='Selected' id='addCancel' type='button' class='buttons' onclick='cancelAdd();'> X </button>";
+	cell5.innerHTML = addConfirm + addCancel;
+}
+
+function addConfirm() {
+	addContact();
+	searchContact("");
+}
+
+function addCancel() {
+	let table = document.getElementById("contactTable");
+	table.deleteRow(0);
+	addFlag = 0;
+}
+
 function addContact(){
 	let firstName = document.getElementById("addFirstName").value;
 	let lastName = document.getElementById("addLastName").value;
@@ -505,16 +546,11 @@ function addContact(){
 	{
 		xhr.onreadystatechange = function() 
 		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
+			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse( xhr.responseText );
-				
-				document.getElementById("addFirstName").value = "";
-				document.getElementById("addLastName").value = "";
-				document.getElementById("addPhoneNumber").value = "";
-				document.getElementById("addEmail").value = "";
-				showAdd();
-
+				if (jsonObject.error != "") {
+					console.log("Server Error (AddContact)");
+				}
 			}
 		};
 		xhr.send(jsonPayload);
@@ -522,7 +558,7 @@ function addContact(){
 
 	catch(err)
 	{
-		console.log("Search Error");
+		console.log("Connection Error (AddContact)");
 	}
 }
 

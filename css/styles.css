@@ -15,7 +15,7 @@ th, td {
     margin: 0 auto 200px;
     padding: 10px 50px;
 
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2) ;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2);
 
 }
 
@@ -34,6 +34,20 @@ th, td {
 
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2) ;
 
+}
+
+#contactTableDiv {
+    border-radius: 20px;
+
+    background-color: aliceblue;
+
+    max-width: 90%;
+    height: auto;
+    
+    margin: 10 auto;
+    padding: 10px 50px;
+
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2);
 }
 
 #controlDiv {
