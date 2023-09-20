@@ -509,7 +509,7 @@ function addCancel() {
 function addContact(){
 	let firstName = document.getElementById("addFirstName").value;
 	let lastName = document.getElementById("addLastName").value;
-	let phone = document.getElementById("addPhoneNumber").value;
+	let phone = document.getElementById("addPhone").value;
 	let email = document.getElementById("addEmail").value;
 
 	let temp = {FirstName: firstName, LastName: lastName, Phone: phone, Email: email, UserID: ID};
