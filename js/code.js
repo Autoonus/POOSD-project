@@ -237,11 +237,13 @@ function searchContact(){
 					let headCell2 = headRow.insertCell(1);
 					let headCell3 = headRow.insertCell(2);
 					let headCell4 = headRow.insertCell(3);
+					let headCell5 = headRow.insertCell(4);
 
 					headCell1.innerHTML = "First Name";
 					headCell2.innerHTML = "Last Name";
 					headCell3.innerHTML = "Phone Number";
 					headCell4.innerHTML = "Email Address";
+					headCell5.innerHTML = "Edit / Delete";
 
 					for(let i = 0; i < jsonObject.results.length; ++i){
 						let row = table.insertRow();
@@ -249,11 +251,13 @@ function searchContact(){
 						let cell2 = row.insertCell(1);
 						let cell3 = row.insertCell(2);
 						let cell4 = row.insertCell(3);
+						let cell5 = row.insertCell(4);
 
 						cell1.innerHTML = jsonObject.results[i].FirstName;
 						cell2.innerHTML = jsonObject.results[i].LastName;
 						cell3.innerHTML = jsonObject.results[i].PhoneNumber;
 						cell4.innerHTML = jsonObject.results[i].EmailAddress;
+						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID);
 					}
 
 					resolve(true);
@@ -267,6 +271,36 @@ function searchContact(){
 			reject(undefined);
 		}
 	});
+}
+
+function generateButtonText(contactID) {
+	return "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"deleteContact(" + contactID.toString() + ");\">Delete</button>"
+}
+
+function deleteContact(contactID) {
+	let tmp = {ID: contactID};
+	let jsonPayload = JSON.stringify(tmp);
+	
+	let url = urlBase + '/DeleteContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) {
+				searchContact();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+
+	catch(err) {
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
 }
 
 function showAdd(){
