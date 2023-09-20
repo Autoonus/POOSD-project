@@ -275,10 +275,10 @@ function searchContact(){
 
 function generateButtonText(contactID, rowNum) {
 	editButton = "<button class='Selected' id='editButton" + rowNum.toString() + "'type='button' class='buttons' onclick='editContact(" + rowNum.toString() + ");'>Edit</button> ";
-	delButton = "<button class='Selected' id='delButton" + rowNum.toString() + "' type='button' class='buttons' onclick='deleteContact(" + contactID.toString() + ");'>Delete</button>";
-	saveButton = "<button style='display: none;' class='Selected' id='saveButton" + rowNum.toString() + "' type='button' class='buttons' onclick='saveContact(" + rowNum.toString() + ");'>Save</button>";
+	delButton = "<button class='Selected' id='delButton" + rowNum.toString() + "' type='button' class='buttons' onclick='deleteContact(" + contactID.toString() + ");'>Delete</button> ";
+	saveButton = "<button style='display: none;' class='Selected' id='saveButton" + rowNum.toString() + "' type='button' class='buttons' onclick='saveContact(" + rowNum.toString() + ");'>Save</button> ";
 	cancelButton = "<button style='display: none;' class='Selected' id='cancelButton" + rowNum.toString() + "' type='button' class='buttons' onclick='cancelEdit(" + rowNum.toString() + ");'>Cancel</button>";
-	return editButton + delButton;
+	return editButton + delButton + saveButton + cancelButton;
 }
 
 function editContact(rowNum) {
