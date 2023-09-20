@@ -303,7 +303,7 @@ function editContact(rowNum) {
 	let FirstName = FirstNameCell.innerText;
 	let LastName = LastNameCell.innerText;
 	let Phone = PhoneCell.innerText;
-	let Email = Email.innerText;
+	let Email = EmailCell.innerText;
 
 	FirstNameCell.innerHTML = "<input type='text' id='FirstName" + rowNum.toString() + "' value='" + FirstName + "'>";
 	LastNameCell.innerHTML = "<input type='text' id='LastName" + rowNum.toString() + "' value='" + LastName + "'>";
