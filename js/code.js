@@ -496,7 +496,7 @@ function showTableAdd() {
 	}
 
 	let table = document.getElementById("contactTable");
-	let row = table.insertRow(0);
+	let row = table.insertRow(1);
 
 	addFlag = 1;
 
@@ -523,7 +523,7 @@ function addConfirm() {
 
 function addCancel() {
 	let table = document.getElementById("contactTable");
-	table.deleteRow(0);
+	table.deleteRow(1);
 	addFlag = 0;
 }
 
