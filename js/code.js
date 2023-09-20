@@ -342,7 +342,6 @@ function saveContact(rowNum, contactID) {
 	EmailCell.innerHTML = wrapCellItem(Email);
 
 	updateContact(FirstName, LastName, Phone, Email, contactID);
-	searchContact("");
 }
 
 function wrapCellItem(item) {
