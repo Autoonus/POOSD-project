@@ -225,3 +225,15 @@ th, td {
 .Showing{
     display: inline-block;
 }
+
+.cellItem {
+    color: black;
+    font-size: 14px;
+    background-color: aliceblue;
+}
+
+.headItem {
+    color: #4501ff;
+    font-size: 18px;
+    background-color: aliceblue;
+}

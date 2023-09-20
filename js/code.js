@@ -104,7 +104,7 @@ function getCookie(cname) {
 	  }
 	}
 	return "";
-  }
+}
 
 function readLoginCookie() {
 	//If they hold a login cookie, parse cookie and store data
@@ -205,7 +205,7 @@ function isAvailable(Login, userAvailable) {
 	});
 }
 
-function searchContact(){
+function searchContact() {
 	return new Promise((resolve, reject) => {
 		let Search = document.getElementById("searchText").value;
 
@@ -239,11 +239,11 @@ function searchContact(){
 					let headCell4 = headRow.insertCell(3);
 					let headCell5 = headRow.insertCell(4);
 
-					headCell1.innerHTML = "First Name";
-					headCell2.innerHTML = "Last Name";
-					headCell3.innerHTML = "Phone Number";
-					headCell4.innerHTML = "Email Address";
-					headCell5.innerHTML = "Edit / Delete";
+					headCell1.innerHTML = wrapHeadItem("First Name");
+					headCell2.innerHTML = wrapHeadItem("Last Name");
+					headCell3.innerHTML = wrapHeadItem("Phone Number");
+					headCell4.innerHTML = wrapHeadItem("Email Address");
+					headCell5.innerHTML = wrapHeadItem("Edit / Delete");
 
 					for(let i = 0; i < jsonObject.results.length; ++i){
 						let row = table.insertRow();
@@ -253,10 +253,10 @@ function searchContact(){
 						let cell4 = row.insertCell(3);
 						let cell5 = row.insertCell(4);
 
-						cell1.innerHTML = jsonObject.results[i].FirstName;
-						cell2.innerHTML = jsonObject.results[i].LastName;
-						cell3.innerHTML = jsonObject.results[i].PhoneNumber;
-						cell4.innerHTML = jsonObject.results[i].EmailAddress;
+						cell1.innerHTML = wrapCellItem(jsonObject.results[i].FirstName);
+						cell2.innerHTML = wrapCellItem(jsonObject.results[i].LastName);
+						cell3.innerHTML = wrapCellItem(jsonObject.results[i].PhoneNumber);
+						cell4.innerHTML = wrapCellItem(jsonObject.results[i].EmailAddress);
 						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i + 1);
 					}
 
@@ -276,7 +276,7 @@ function searchContact(){
 function generateButtonText(contactID, rowNum) {
 	editButton = "<button class='Selected' id='editButton" + rowNum.toString() + "'type='button' class='buttons' onclick='editContact(" + rowNum.toString() + ");'>Edit</button> ";
 	delButton = "<button class='Selected' id='delButton" + rowNum.toString() + "' type='button' class='buttons' onclick='deleteContact(" + contactID.toString() + ");'>Delete</button> ";
-	saveButton = "<button style='display: none;' class='Selected' id='saveButton" + rowNum.toString() + "' type='button' class='buttons' onclick='saveContact(" + rowNum.toString() + ");'>Save</button> ";
+	saveButton = "<button style='display: none;' class='Selected' id='saveButton" + rowNum.toString() + "' type='button' class='buttons' onclick='saveContact(" + rowNum.toString() + " " + contactID.toString() + ");'>Save</button> ";
 	cancelButton = "<button style='display: none;' class='Selected' id='cancelButton" + rowNum.toString() + "' type='button' class='buttons' onclick='cancelEdit(" + rowNum.toString() + ");'>Cancel</button>";
 	return editButton + delButton + saveButton + cancelButton;
 }
@@ -289,8 +289,8 @@ function editContact(rowNum) {
 
 	edit.style.display = "none";
 	del.style.display = "none";
-	save.style.display = "block";
-	cancel.style.display = "block";
+	save.style.display = "inline-block";
+	cancel.style.display = "inline-block";
 
 	let table = document.getElementById("contactTable");
 	let row = table.rows[rowNum];
@@ -312,6 +312,73 @@ function editContact(rowNum) {
 	
 }
 
+function saveContact(rowNum, contactID) {
+	let edit = document.getElementById("editButton" + rowNum.toString());
+	let del = document.getElementById("delButton" + rowNum.toString());
+	let save = document.getElementById("saveButton" + rowNum.toString());
+	let cancel = document.getElementById("cancelButton" + rowNum.toString());
+
+	edit.style.display = "inline-block";
+	del.style.display = "inline-block";
+	save.style.display = "none";
+	cancel.style.display = "none";
+
+	let table = document.getElementById("contactTable");
+	let row = table.rows[rowNum];
+	
+	let FirstNameCell = row.cells[0];
+	let LastNameCell = row.cells[1];
+	let PhoneCell = row.cells[2];
+	let EmailCell = row.cells[3];
+
+	let FirstName = document.getElementById("FirstName" + rowNum.toString()).value;
+	let LastName = document.getElementById("LastName" + rowNum.toString()).value;
+	let Phone = document.getElementById("Phone" + rowNum.toString()).value;
+	let Email = document.getElementById("Email" + rowNum.toString()).value;
+
+	FirstNameCell.innerHTML = wrapCellItem(FirstName);
+	LastNameCell.innerHTML = wrapCellItem(LastName);
+	PhoneCell.innerHTML = wrapCellItem(Phone);
+	EmailCell.innerHTML = wrapCellItem(Email);
+
+	updateContact(FirstName, LastName, Phone, Email, contactID);
+	searchContact("");
+}
+
+function wrapCellItem(item) {
+	return "<p class=cellItem>" + item + "</p>";
+}
+
+function wrapHeadItem(item) {
+	return "<p class=headItem>" + item + "</p>";
+}
+
+function updateContact(FirstName, LastName, Phone, Email, contactID) {
+	let tmp = {FirstName: FirstName, LastName: LastName, Phone: Phone, Email: Email, ID: contactID};
+	let jsonPayload = JSON.stringify(tmp);
+	
+	let url = urlBase + '/UpdateContact.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) {
+				console.log("Contact " + contactID.toString() + " Updated...");
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+
+	catch(err) {
+		console.log("Connection Error Occured");
+	}
+}
+
 function deleteContact(contactID) {
 	let tmp = {ID: contactID};
 	let jsonPayload = JSON.stringify(tmp);
@@ -327,14 +394,16 @@ function deleteContact(contactID) {
 		xhr.onreadystatechange = function() 
 		{
 			if (this.readyState == 4 && this.status == 200) {
-				searchContact();
+				searchContact("");
+			} else {
+				console.log("Error Occured");
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 
 	catch(err) {
-		document.getElementById("loginResult").innerHTML = err.message;
+		console.log("Connection Error Occured");
 	}
 }
 
