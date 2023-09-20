@@ -207,7 +207,7 @@ function isAvailable(Login, userAvailable) {
 
 function searchContact(){
 	return new Promise((resolve, reject) => {
-		let search = document.getElementById("searchContactButton").value;
+		let Search = document.getElementById("searchText").value;
 
 		let temp  = {Search:search, UserID: ID};
 		let jsonPayload = JSON.stringify(temp);
