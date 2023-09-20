@@ -496,7 +496,7 @@ function showTableAdd() {
 	}
 
 	let table = document.getElementById("contactTable");
-	let addRow = table.insertRow(0);
+	let row = table.insertRow(0);
 
 	addFlag = 1;
 
