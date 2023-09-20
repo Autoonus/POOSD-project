@@ -257,7 +257,7 @@ function searchContact(){
 						cell2.innerHTML = jsonObject.results[i].LastName;
 						cell3.innerHTML = jsonObject.results[i].PhoneNumber;
 						cell4.innerHTML = jsonObject.results[i].EmailAddress;
-						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i);
+						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i + 1);
 					}
 
 					resolve(true);
