@@ -511,8 +511,8 @@ function showTableAdd() {
 	cell3.innerHTML = "<input type='text' id='addPhone' placeholder='Phone'>"
 	cell4.innerHTML = "<input type='text' id='addEmail' placeholder='Email'>"
 	
-	let addConfirm = "<button class='Selected' id='addConfirm' type='button' class='buttons' onclick='commitAdd();'>Add</button> ";
-	let addCancel = "<button class='Selected' id='addCancel' type='button' class='buttons' onclick='cancelAdd();'> X </button>";
+	let addConfirm = "<button class='Selected' id='addConfirm' type='button' class='buttons' onclick='addConfirm();'>Add</button> ";
+	let addCancel = "<button class='Selected' id='addCancel' type='button' class='buttons' onclick='addCancel();'> X </button>";
 	cell5.innerHTML = addConfirm + addCancel;
 }
 
