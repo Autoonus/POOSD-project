@@ -209,7 +209,7 @@ function searchContact(){
 	return new Promise((resolve, reject) => {
 		let Search = document.getElementById("searchText").value;
 
-		let temp  = {Search:search, UserID: ID};
+		let temp  = {Search:Search, UserID: ID};
 		let jsonPayload = JSON.stringify(temp);
 		
 		let url = urlBase + '/SearchContact.' + extension;
