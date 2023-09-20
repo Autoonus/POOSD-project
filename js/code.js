@@ -274,15 +274,42 @@ function searchContact(){
 }
 
 function generateButtonText(contactID, rowNum) {
-	editButton = "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"editContact(" + rowNum.toString() + ");\">Edit</button> ";
-	delButton =  "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"deleteContact(" + contactID.toString() + ");\">Delete</button>";
+	editButton = "<button class='Selected' id='editButton" + rowNum.toString() + "'type='button' class='buttons' onclick='editContact(" + rowNum.toString() + ");'>Edit</button> ";
+	delButton = "<button class='Selected' id='delButton" + rowNum.toString() + "' type='button' class='buttons' onclick='deleteContact(" + contactID.toString() + ");'>Delete</button>";
+	saveButton = "<button style='display: none;' class='Selected' id='saveButton" + rowNum.toString() + "' type='button' class='buttons' onclick='saveContact(" + rowNum.toString() + ");'>Save</button>";
+	cancelButton = "<button style='display: none;' class='Selected' id='cancelButton" + rowNum.toString() + "' type='button' class='buttons' onclick='cancelEdit(" + rowNum.toString() + ");'>Cancel</button>";
 	return editButton + delButton;
 }
 
 function editContact(rowNum) {
+	let edit = document.getElementById("editButton" + rowNum.toString());
+	let del = document.getElementById("editButton" + rowNum.toString());
+	let save = document.getElementById("editButton" + rowNum.toString());
+	let cancel = document.getElementById("editButton" + rowNum.toString());
+
+	edit.style.display = "none";
+	del.style.display = "none";
+	save.style.display = "block";
+	cancel.style.display = "block";
+
 	let table = document.getElementById("contactTable");
 	let row = table.rows[rowNum];
-	console.log(row);
+	
+	let FirstNameCell = row.cells[0];
+	let LastNameCell = row.cells[1];
+	let PhoneCell = row.cells[2];
+	let EmailCell = row.cells[3];
+
+	let FirstName = FirstNameCell.innerText;
+	let LastName = LastNameCell.innerText;
+	let Phone = PhoneCell.innerText;
+	let Email = Email.innerText;
+
+	FirstNameCell.innerHTML = "<input type='text' id='FirstName" + rowNum.toString() + "' value='" + FirstName + "'>";
+	LastNameCell.innerHTML = "<input type='text' id='LastName" + rowNum.toString() + "' value='" + LastName + "'>";
+	PhoneCell.innerHTML = "<input type='text' id='Phone" + rowNum.toString() + "' value='" + Phone + "'>";
+	EmailCell.innerHTML = "<input type='text' id='Email" + rowNum.toString() + "' value='" + Email + "'>";
+	
 }
 
 function deleteContact(contactID) {
