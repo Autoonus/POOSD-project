@@ -257,7 +257,7 @@ function searchContact(){
 						cell2.innerHTML = jsonObject.results[i].LastName;
 						cell3.innerHTML = jsonObject.results[i].PhoneNumber;
 						cell4.innerHTML = jsonObject.results[i].EmailAddress;
-						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID);
+						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i);
 					}
 
 					resolve(true);
@@ -273,8 +273,15 @@ function searchContact(){
 	});
 }
 
-function generateButtonText(contactID) {
-	return "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"deleteContact(" + contactID.toString() + ");\">Delete</button>"
+function generateButtonText(contactID, rowNum) {
+	editButton = "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"editContact(" + rowNum.toString() + ");\">Edit</button>";
+	delButton =  "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"deleteContact(" + contactID.toString() + ");\">Delete</button>"
+}
+
+function editContact(rowNum) {
+	let table = document.getElementById("contactTable");
+	let row = table.rows[rowNum];
+	console.log(row);
 }
 
 function deleteContact(contactID) {
