@@ -274,8 +274,9 @@ function searchContact(){
 }
 
 function generateButtonText(contactID, rowNum) {
-	editButton = "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"editContact(" + rowNum.toString() + ");\">Edit</button>";
-	delButton =  "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"deleteContact(" + contactID.toString() + ");\">Delete</button>"
+	editButton = "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"editContact(" + rowNum.toString() + ");\">Edit</button> ";
+	delButton =  "<button class=\"Selected\" type=\"button\" class=\"buttons\" onclick=\"deleteContact(" + contactID.toString() + ");\">Delete</button>";
+	return editButton + delButton;
 }
 
 function editContact(rowNum) {
