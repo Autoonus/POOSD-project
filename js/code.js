@@ -283,9 +283,9 @@ function generateButtonText(contactID, rowNum) {
 
 function editContact(rowNum) {
 	let edit = document.getElementById("editButton" + rowNum.toString());
-	let del = document.getElementById("editButton" + rowNum.toString());
-	let save = document.getElementById("editButton" + rowNum.toString());
-	let cancel = document.getElementById("editButton" + rowNum.toString());
+	let del = document.getElementById("delButton" + rowNum.toString());
+	let save = document.getElementById("saveButton" + rowNum.toString());
+	let cancel = document.getElementById("cancelButton" + rowNum.toString());
 
 	edit.style.display = "none";
 	del.style.display = "none";
