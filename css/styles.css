@@ -80,6 +80,25 @@ header {
 	color: #162938;
 }
 
+.navigation .btnLogout-popup {
+	width: 130px;
+	height: 50px;
+	background: transparent;
+	border: 2px solid #fff;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1.1em;
+	color: #fff;
+	font-weight: 500;
+	transition: .5s;
+}
+
+.navigation .btnLogout-popup:hover {
+	background: #fff;
+	color: #162938;
+}
+
 .wrapper {
 	position: relative;
 	width: 400px;
