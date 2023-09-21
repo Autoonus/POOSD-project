@@ -113,7 +113,6 @@ header {
 	align-items: center;
 	transition: transform .1s ease, height .2s ease;
 	overflow: hidden;
-	transform: scale(0);
 }
 
 .wrapper.active-popup {
