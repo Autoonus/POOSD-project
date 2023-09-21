@@ -1,214 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>**The Otter**</title>
-	<!--<script type="text/javascript" src="js/md5.js"></script>-->
-	<script type="text/javascript" src="js/code.js"></script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body onload="setup()">
+<body>
 
-	<h1 id="title">The Otter Contact Manager</h1>
-
-	<div id="loginRegisterDiv">
-
-		<div id="controlDiv">
-			<button class="Selected" id="loginOption" onclick="showLogin()">Login</button>
-			<button class="Unselected" id="registerOption" onclick="showRegister()">Register</button>
+	<header>
+		<h2 class="logo">The-Otter</h2>
+		<nav class="navigation">
+			<a href="#">Home</a>
+			<a href="#">GitHub</a>
+			<a href="#">Contact</a>
+			<button class="btnLogin-popup">Login</button>
+		</nav>
+	</header>
+	
+	<div class="wrapper">
+		<div class ="form-box login">
+			<h2>Login</h2>
+			<form action="#">
+				<div class="input-box">
+					<span class="icon"><ion-icon name="person"></ion-icon></span>
+					<input id="Login" type="user" required>
+					<label>Username</label>
+				</div>
+				<div class="input-box">
+					<span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+					<input id="Password" type="password" required>
+					<label>Password</label>
+				</div>
+				<button type="submit" id="loginButton" class="btn">Login</button>
+				<div class="login-register">
+					<p>New to The Otter? <a href="#" class="register-link">Register</a></p>
+				</div>
+			</form>
 		</div>
-
-		<div id="loginDiv">
-			<label class="EntryLabel">Username:</label>
-			<input class="InputBox" type="text" id="Login" placeholder="Username" /><br />
-
-			<label class="EntryLabel">Password:</label>
-			<input class="InputBox" type="password" id="Password" placeholder="Password"/><br />
-			<button type="button" id="loginButton" class="Button" onclick="doLogin();">Login</button>
-			<p id="loginResult"></p>
-		</div>
-
-		<div id="registerDiv">
-			<label class="EntryLabel">First Name:</label>
-			<input class="InputBox" type="text" id="FirstName" placeholder="First Name" /><br />
-			
-			<label class="EntryLabel">Last Name:</label>
-			<input class="InputBox" type="text" id="LastName" placeholder="Last Name"/><br />
-			
-			<label class="EntryLabel">Username:</label>
-			<input class="InputBox" type="text" id="newUser" placeholder="Username" /><br />
-			
-			<label class="EntryLabel">Password:</label>
-			<input class="InputBox" type="password" id="newPassword" placeholder="Password"/><br />
-			
-			<button type="button" id="registerButton" class="Button" onclick="register();">Sign Up</button>
-
-			<div id="usernameRequirementsDiv">
-				<p class="invalid" id="userLengthReq">Username length between 3 and 20 characters</p>
-				<p class="invalid" id="userContains">Username contains only letters and numbers</p>
-				<p class="invalid" id="userAvailable">Username available</p>
-			</div>
-
-			<div id="passwordRequirementsDiv">
-				<p class="invalid" id="passwordLengthReq">Password length between 3 and 20 characters</p>
-				<p class="invalid" id="passwordContains">Password contains only letters, numbers, and, special characters</p>
-			</div>
-
-			<p id="registerResult"></p>
+		
+		<div class ="form-box register">
+			<h2>Registration</h2>
+			<form action="#">
+				<div class="input-box">
+					
+					<input type="text" required>
+					<label>First name</label>
+				</div>
+				<div class="input-box">
+					
+					<input type="text" required>
+					<label>Last name</label>
+				</div>
+				<div class="input-box">
+					<span class="icon"><ion-icon name="person"></ion-icon></span>
+					<input type="user" required>
+					<label>Username</label>
+				</div>
+				<div class="input-box">
+					<span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+					<input type="password" required>
+					<label>Password</label>
+				</div>
+				<button type="submit" class="btn">Register</button>
+				<div class="login-register">
+					<p>Already have an account? <a href="#" class="login-link">Login</a></p>
+				</div>
+			</form>
 		</div>
 	</div>
 
-	<script>
-		var userReqsNotMet = 3;
-		var passwordReqsNotMet = 2;
-		var lnameReqNotMet = 1;
-		var fnameReqNotMet = 1;
-
-		//fname and lname check (just that there's something in them)
-		let fname = document.getElementById("FirstName");
-		let lname = document.getElementById("LastName");
-
-		lname.onkeyup = function () {
-			if (lname.value.length == 0) {
-				lnameReqNotMet = 1;
-			} else {
-				lnameReqNotMet = 0;
-			}
-
-			checkReqs(lname, lnameReqNotMet);
-		}
-
-		fname.onkeyup = function () {
-			if (fname.value.length == 0) {
-				fnameReqNotMet = 1;
-			} else {
-				fnameReqNotMet = 0;
-			}
-
-			checkReqs(fname, fnameReqNotMet);
-		}
-
-		//Username validation
-		let newUser = document.getElementById("newUser");
-		let usernameRequirementsDiv = document.getElementById("usernameRequirementsDiv");
-		let userLengthReq = document.getElementById("userLengthReq");
-		let userContains = document.getElementById("userContains");
-		let userAvailable = document.getElementById("userAvailable");
-
-		newUser.onfocus = function () {
-			usernameRequirementsDiv.style.display = "block";
-		}
-
-		newUser.onblur = function () {
-			usernameRequirementsDiv.style.display = "none";
-		}
-
-		newUser.onkeyup = function () {
-			var allowed = /^[0-9A-Za-z]*$/;
-			var reqCounter = 0;
-
-			//Check length
-			if (newUser.value.length < 3 || newUser.value.length > 20) {
-				//too short or too long
-				userLengthReq.className = "invalid";
-				reqCounter++;
-			} else {
-				console.log("Valid user len");
-				userLengthReq.className = "valid";
-			}
-
-			//Check contains
-			if (!(allowed.test(newUser.value))){
-				//has symbols that aren't letters or numbers
-				userContains.className = "invalid";
-				reqCounter++;
-			} else {
-				console.log("Valid user contents");
-				userContains.className = "valid";
-			}
-
-			//Check availability
-			isAvailable(newUser.value, userAvailable).then((available) => {
-				
-				//Check response
-				if (!available) {
-					reqCounter++;
-					userAvailable.className = "invalid";
-				} else {
-					userAvailable.className = "valid";
-				}
-
-				//Check all reqs and whether or not to enable submissions
-				userReqsNotMet = reqCounter;
-				checkReqs(newUser, userReqsNotMet);
-			}).catch((err) => {
-				console.log("Promise error...");
-			});
-		}
-
-		//password validation
-		let newPassword = document.getElementById("newPassword");
-		let passwordRequirementsDiv = document.getElementById("passwordRequirementsDiv");
-		let passwordLengthReq = document.getElementById("passwordLengthReq");
-		let passwordContains = document.getElementById("passwordContains");
-
-		newPassword.onfocus = function () {
-			passwordRequirementsDiv.style.display = "block";
-		}
-
-		newPassword.onblur = function () {
-			passwordRequirementsDiv.style.display = "none";
-		}
-
-		newPassword.onkeyup = function () {
-			var allowed = /^[0-9A-Za-z!@#$%^&*]*$/;
-			var reqCounter = 0;
-
-			//Check length
-			if (newPassword.value.length < 3 || newPassword.value.length > 20) {
-				//too short or too long
-				passwordLengthReq.className = "invalid";
-				reqCounter++;
-			} else {
-				passwordLengthReq.className = "valid";
-			}
-
-			//Check contains
-			if (!(allowed.test(newPassword.value))){
-				//has symbols that aren't letters or numbers
-				passwordContains.className = "invalid";
-				reqCounter++;
-			} else {
-				passwordContains.className = "valid";
-			}
-
-			//Check reqs and whether or not to enable submissions
-			passwordReqsNotMet = reqCounter;
-			checkReqs(newPassword, passwordReqsNotMet);
-		}
-
-		function checkButtonState() {
-			if (userReqsNotMet + passwordReqsNotMet + lnameReqNotMet + fnameReqNotMet != 0) {
-				//Requirements unmet, button is disabled
-				disable(document.getElementById("registerButton"));
-			} else {
-				//Requirements met, allow submission
-				enable(document.getElementById("registerButton"));
-			}
-		}
-
-		function checkReqs(field, reqsNotMet) {
-			if (reqsNotMet != 0) {
-				field.style.borderColor = "rgb(255, 0, 0)";
-			} else {
-				field.style.borderColor = "rgb(0, 255, 0)";
-			}
-
-			//After checking the reqs, check if the button should be enabled or disabled
-			checkButtonState();
-		}
-
-	</script>
-
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
 </body>
 </html>
