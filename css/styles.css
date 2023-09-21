@@ -61,19 +61,6 @@ header {
 	transform: scaleX(1);
 }
 
-.navigation .btnLogin {
-	width: 130px;
-	height: 50px;
-	background: #fff;
-	border: 2px solid #fff;
-	outline: none;
-	border-radius: 6px;
-	cursor: pointer;
-	font-size: 1.1em;
-	color: #162938;
-	font-weight: 500;
-}
-
 .navigation .btnLogin-popup {
 	width: 130px;
 	height: 50px;
