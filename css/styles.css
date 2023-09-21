@@ -1,253 +1,216 @@
-th, td {
-    padding: 10px;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
 
-#loginRegisterDiv {
-
-    border-radius: 20px;
-
-    background-color: aliceblue;
-    text-align: center;
-
-    max-width: 750px;
-    height: auto;
-    
-    margin: 0 auto 200px;
-    padding: 10px 50px;
-
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2);
-
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: url('ocean.jpg') no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
-#contactDiv {
-
-    border-radius: 20px;
-
-    background-color: aliceblue;
-    text-align: center;
-
-    max-width: 1000px;
-    height: auto;
-    
-    margin: 0 auto 200px;
-    padding: 10px 50px;
-
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2) ;
-
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(22, 41, 56, .6);
+	padding: 20px 100px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 99;
+	border-bottom: 2mm ridge rgba(255, 255, 255, .2);
 }
 
-#contactTableDiv {
-    border-radius: 20px;
-
-    background-color: aliceblue;
-
-    max-width: 90%;
-    height: auto;
-    
-    margin: 10 auto;
-    padding: 10px 50px;
-
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .2);
+.logo {
+	font-size: 2em;
+	color: #fff;
+	user-select: none;
 }
 
-#controlDiv {
-    border-bottom: 3px solid #0178ff;
-    width: 70%;
-    margin: 10px auto;
-    display: flex;
-    justify-content: space-between;
+.navigation a {
+	position: relative;
+	font-size: 1.1em;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 500;
+	margin-right: 40px
 }
 
-#controlContactDiv {
-    border-bottom: 3px solid #0178ff;
-    width: 80%;
-    margin: 10px auto;
-    display: flex;
-    justify-content: space-between;
+.navigation a::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	width: 100%;
+	height: 3px;
+	background: #fff;
+	border-radius: 5px;
+	transform: scaleX(0);
+	transition: transform .5s;
 }
 
-#loggedInDiv {
-    border-bottom: 3px solid #0178ff;
-    width: 70%;
-    margin: 10px auto;
-    display: flex;
-    justify-content: space-between;
+.navigation a:hover::after {
+	transform: scaleX(1);
 }
 
-#usernameRequirementsDiv {
-    display: none;
-    width: fit-content;
-    margin: auto;
+.navigation .btnLogin-popup {
+	width: 130px;
+	height: 50px;
+	background: transparent;
+	border: 2px solid #fff;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1.1em;
+	color: #fff;
+	font-weight: 500;
+	transition: .5s;
 }
 
-#passwordRequirementsDiv {
-    display: none;
-    width: fit-content;
-    margin: auto;
+.navigation .btnLogin-popup:hover {
+	background: #fff;
+	color: #162938;
 }
 
-.InputBox {
-    
-    border-radius: 15px;
-    outline: 0px;
-    border: 2px solid #0178ff;
-
-    width: 80%;
-    padding: 10px;
-    margin: 10px;
-
-    box-sizing: border-box;
-
-    font-size: 16px;
+.wrapper {
+	position: relative;
+	width: 400px;
+	height: 440px;
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .5);
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform .1s ease, height .2s ease;
+	overflow: hidden;
+	transform: scale(0);
 }
 
-.Button {
-
-    border-radius: 15px;
-    outline: 0px;
-    border: 0px;
-
-    width: 30%;
-    padding: 10px;
-    margin: 10px;
-    
-    box-sizing: border-box;
-
-    font-size: 18px;
-    background-color: #0178ff;
-    color: white;
-
-    cursor: pointer;
+.wrapper.active-popup {
+	transform: scale(1);
 }
 
-.Button:hover {
-    background-color: #4501ff;
+.wrapper.active {
+	height: 600px;
 }
 
-.DisabledButton {
-    
-    border-radius: 15px;
-    outline: 0px;
-    border: 0px;
-
-    width: 30%;
-    padding: 10px;
-    margin: 10px;
-    
-    box-sizing: border-box;
-
-    font-size: 18px;
-    background-color: #696969;
-    color: white;
-
-    cursor: pointer;
+.wrapper .form-box {
+	width: 100%;
+	padding: 40px;
+	
 }
 
-
-.Unselected {
-    border:0px;
-
-    flex: 0 1 auto;
-    margin: 0px 0px;
-    padding: 5px;
-
-    display:inline-block;
-    vertical-align: middle;  
-    box-sizing: border-box;
-
-    font-size: 24px;
-    background-color: aliceblue;
-    color: #0178ff;
-
-    cursor: pointer;
+.wrapper .form-box.login {
+	transition: .none;
+	transform: translateX(0);
 }
 
-.Unselected:hover {
-    background: #0178ff;
-    color: white;
+.wrapper.active .form-box.login {
+	transition: none;
+	transform: translateX(-400px);
 }
 
-.Selected {
-    border:0px;
-
-    flex: 0 1 auto;
-    margin: 0px 0px;
-    padding: 5px;
-
-    display:inline-block;
-    vertical-align: middle;  
-    box-sizing: border-box;
-
-    font-size: 24px;
-    background: #0178ff;
-    color: white;
-
-    cursor: pointer;
-    
+.wrapper .form-box.register {
+	position: absolute;
+	transition: none;
+	transform: translateX(400px);
 }
 
-.Selected:hover {
-    background: #4501ff;
-    color: white;
+.wrapper.active .form-box.register {
+	transition: none;
+	transform: translateX(0);
 }
 
-.EntryLabel {
-    width: 15%;
-    min-width: 90;
-    box-sizing: border-box;
-    display:inline-block;
-    text-align:left;
-    margin: auto;
-
-    font-size: 20px;
-    color: #4501ff;
+.form-box h2 {
+	font-size: 2em;
+	color: #162938;
+	text-align: center;
 }
 
-.AddLabel {
-    min-width: 200;
-    box-sizing: border-box;
-    display: inline-block;
-    text-align: center;
-    margin: auto;
-
-    font-size: 20px;
-    color: #4501ff;
+.input-box {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	border-bottom: 2px solid #162938;
+	margin: 30px 0;
 }
 
-.valid {
-    text-align: center;
-    border-radius: 10px;
-    font-size: 18px;
-    outline: rgb(0, 255, 0) solid 2px;
-    background-color: white;
-    padding: 5px 10px;
+.input-box label {
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	transform: translateY(-50%);
+	font-size: 1em;
+	color: #162938;
+	font-weight: 500;
+	pointer-events: none;
+	transition: .5s;
 }
 
-.invalid {
-    text-align: center;
-    border-radius: 10px;
-    font-size: 18px;
-    outline: rgb(255, 0, 0) solid 2px;
-    background-color: white;
-    padding: 5px 10px;
+.input-box input:focus~label,
+.input-box input:valid~label {
+	top: 8px;
+	font-size: 0.8em
 }
 
-.Hidden {
-    display: none;
+.input-box input {
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, .5);
+	border: none;
+	outline: none;
+	font-size: 1em;
+	color: #162938;
+	font-weight: 600;
+	padding: 0 35px 0 5px;
 }
 
-.Showing{
-    display: inline-block;
+.input-box .icon {
+	position: absolute;
+	right: 8px;
+	font-size: 1.2em;
+	color: #162938;
+	line-height: 57px;
 }
 
-.cellItem {
-    color: black;
-    font-size: 14px;
-    background-color: aliceblue;
+.btn {
+	width: 100%;
+	height: 45px;
+	background: #2e4e51;
+	border: none;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1em;
+	color: #fff;
+	font-weight: 500;
 }
 
-.headItem {
-    color: #4501ff;
-    font-size: 18px;
-    background-color: aliceblue;
+.login-register {
+	font-size: .9em;
+	color: #162938;
+	text-align: center;
+	font-weight: 500;
+	margin: 25px 0 10px;
+}
+
+.login-register p a {
+	color: #162938;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.login-register p a:hover {
+	text-decoration: underline;
 }
