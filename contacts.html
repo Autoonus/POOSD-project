@@ -26,23 +26,25 @@
 	</header>
 	
 <div class="wrapper-contact">
-	<div id="controlContactDiv">
-		<label class="EntryLabel" id="searchLabel">Search:</label>
-		<input class="InputBox" type="text" id="searchText" placeholder="Contact To Search For"/>
-		<button class="Unselected" type="button" id="searchContactButton" class="buttons" onclick="searchContact();">Search</button>
-		<button class="Selected" type="button" id="contactsButton" class="buttons" onclick="showContacts();">Contacts</button>
-		<button class="Unselected" type="button" id="addContactButton" class="buttons" onclick="showTableAdd();">Add</button>
-	</div>
-
-	<div id="contactTableDiv" class="Showing">
-		<table id="contactTable">
-			<thead>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Phone</th>
-				<th>Email</th>
-			</thead>
-		</table>
+	<div class ="form-box contact">
+		<div id="controlContactDiv">
+			<label class="EntryLabel" id="searchLabel">Search:</label>
+			<input class="InputBox" type="text" id="searchText" placeholder="Contact To Search For"/>
+			<button class="Unselected" type="button" id="searchContactButton" class="buttons" onclick="searchContact();">Search</button>
+			<button class="Selected" type="button" id="contactsButton" class="buttons" onclick="showContacts();">Contacts</button>
+			<button class="Unselected" type="button" id="addContactButton" class="buttons" onclick="showTableAdd();">Add</button>
+		</div>
+	
+		<div id="contactTableDiv" class="Showing">
+			<table id="contactTable">
+				<thead>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Phone</th>
+					<th>Email</th>
+				</thead>
+			</table>
+		</div>
 	</div>
 	
 </div>
