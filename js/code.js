@@ -465,26 +465,6 @@ function deleteContact(contactID) {
 	}
 }
 
-function showContacts(){
-	addDiv = document.getElementById("addContactDiv");
-	contactDiv = document.getElementById("contactTableDiv");
-	addButton = document.getElementById("addContactButton");
-	searchButton = document.getElementById("searchContactButton");
-	contactsButton = document.getElementById("contactsButton");
-	searchLabel = document.getElementById("searchLabel");
-	searchText = document.getElementById("searchText");
-
-	if(contactDiv.className == "Hidden"){
-		addDiv.className = "Hidden";
-		contactDiv.className = "Showing";
-		addButton.className = "Unselected";
-		searchButton.style.display = "inline-block";
-		contactsButton.className = "Selected";
-		searchLabel.style.display = "inline-block";
-		searchText.style.display = "inline-block";
-	}
-}
-
 function showTableAdd() {
 	//Don't add more than one empty row when adding a contact
 	if (addFlag == 1) {
