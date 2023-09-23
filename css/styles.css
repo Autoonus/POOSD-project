@@ -224,6 +224,7 @@ header {
 	color: #fff;
 	font-weight: 500;
 	transition: .5s;
+	margin-right: 30px;
 }
 
 .btnSearch-popup:hover {
