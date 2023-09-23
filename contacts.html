@@ -30,10 +30,9 @@
 		<div class="input-box-search" id="controlContactDiv">
 			<input class="InputBox" type="text" id="searchText" required>
 			<label class="EntryLabel" id="searchLabel">Search</label>
+			<button class="btnSearch-popup" type="submit" id="searchContactButton" onclick="searchContact();">Search</button>
+			<button class="btnSearch-popup" type="submit" id="addContactButton" onclick="showTableAdd();">Add</button>
 		</div>
-
-		<button class="btnSearch-popup" type="submit" id="searchContactButton" onclick="searchContact();">Search</button>
-		<button class="btnSearch-popup" type="submit" id="addContactButton" onclick="showTableAdd();">Add</button>
 	
 		<div id="contactTableDiv" class="Showing">
 			<table id="contactTable">

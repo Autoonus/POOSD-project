@@ -213,9 +213,9 @@ header {
 }
 
 .btnSearch-popup {
-	width: 130px;
+	width: 100px;
 	height: 50px;
-	background: transparent;
+	background: #162938;
 	border: 2px solid #fff;
 	outline: none;
 	border-radius: 6px;
