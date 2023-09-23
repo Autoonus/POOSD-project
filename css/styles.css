@@ -184,7 +184,7 @@ header {
 
 .input-box-search label {
 	position: absolute;
-	top: 50%;
+	top: 70%;
 	left: 5px;
 	transform: translateY(-50%);
 	font-size: 1em;
@@ -213,6 +213,8 @@ header {
 }
 
 .btnSearch-popup {
+	position: absolute;
+	right: 8px;
 	width: 100px;
 	height: 50px;
 	background: #162938;
