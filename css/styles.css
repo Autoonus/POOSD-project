@@ -345,3 +345,33 @@ header {
 .login-register p a:hover {
 	text-decoration: underline;
 }
+
+#contactTable {
+	width: 100%;
+}
+
+th {
+	background-color: rgba(22, 41, 56, .6);
+	color: white;
+	font-size: 18px;
+	padding: 10px;
+}
+
+td {
+	padding: 10px;
+	font-size: 14px;
+	color:#162938;
+}
+
+tr {
+	background-color: rgba(255, 255, 255, .5);
+}
+
+tr:nth-child(even) {
+	background-color: rgba(255, 255, 255, .2);
+}
+
+tr:not(:first-child):hover {
+	background-color: rgba(22, 41, 56, .6);
+}
+
