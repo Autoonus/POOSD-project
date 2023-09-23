@@ -355,18 +355,18 @@ header {
 
 tr:first-child {
 	background-color: rgba(22, 41, 56, .6);
-	color: white;
 }
 
 th {
 	font-size: 18px;
 	padding: 10px;
+	color: white;
 }
 
 td {
 	padding: 10px;
 	font-size: 14px;
-	color:#162938;
+	color: rgb(0, 0, 0);
 }
 
 tr {
@@ -378,7 +378,6 @@ tr:nth-child(even) {
 }
 
 tr:not(:first-child):hover {
-	background-color: rgba(22, 41, 56, .6);
-	color: white;
+	background-color: rgba(255, 255, 255, 0.7);
 }
 
