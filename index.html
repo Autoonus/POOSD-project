@@ -42,7 +42,6 @@
 		<div class ="form-box register">
 			<h2>Registration</h2>
 				<div class="input-box">
-					
 					<input type="text" id="FirstName" required>
 					<label>First name</label>
 				</div>
@@ -72,5 +71,24 @@
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 	<script type="text/javascript" src="js/code.js"></script>
+	<script>
+		const wrapper = document.querySelector('.wrapper');
+		const loginLink = document.querySelector('.login-link');
+		const registerLink = document.querySelector('.register-link');
+		const btnPopup = document.querySelector('.btnLogin-popup');
+		
+		registerLink.addEventListener('click', ()=> {
+			wrapper.classList.add('active');
+		});
+		
+		loginLink.addEventListener('click', ()=> {
+			wrapper.classList.remove('active');
+		});
+		
+		btnPopup.addEventListener('click', ()=> {
+			wrapper.classList.add('active-popup');
+		});
+		</script>
 </body>
 </html>
+

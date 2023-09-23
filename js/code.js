@@ -6,23 +6,6 @@ let ID = 0;
 let FirstName = "";
 let LastName = "";
 
-const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelector('.btnLogin-popup');
-
-registerLink.addEventListener('click', ()=> {
-	wrapper.classList.add('active');
-});
-
-loginLink.addEventListener('click', ()=> {
-	wrapper.classList.remove('active');
-});
-
-btnPopup.addEventListener('click', ()=> {
-	wrapper.classList.add('active-popup');
-});
-
 function doLogin() {
 	let Login = document.getElementById("Login").value;
 	let Password = document.getElementById("Password").value;
@@ -257,11 +240,11 @@ function searchContact() {
 					let headCell4 = headRow.insertCell(3);
 					let headCell5 = headRow.insertCell(4);
 
-					headCell1.innerHTML = wrapHeadItem("First Name");
-					headCell2.innerHTML = wrapHeadItem("Last Name");
-					headCell3.innerHTML = wrapHeadItem("Phone Number");
-					headCell4.innerHTML = wrapHeadItem("Email Address");
-					headCell5.innerHTML = wrapHeadItem("Edit / Delete");
+					headCell1.innerHTML = "First Name";
+					headCell2.innerHTML = "Last Name";
+					headCell3.innerHTML = "Phone Number";
+					headCell4.innerHTML = "Email Address";
+					headCell5.innerHTML = "Edit / Delete";
 
 					for(let i = 0; i < jsonObject.results.length; ++i){
 						let row = table.insertRow();
@@ -271,10 +254,10 @@ function searchContact() {
 						let cell4 = row.insertCell(3);
 						let cell5 = row.insertCell(4);
 
-						cell1.innerHTML = wrapCellItem(jsonObject.results[i].FirstName);
-						cell2.innerHTML = wrapCellItem(jsonObject.results[i].LastName);
-						cell3.innerHTML = wrapCellItem(jsonObject.results[i].PhoneNumber);
-						cell4.innerHTML = wrapCellItem(jsonObject.results[i].EmailAddress);
+						cell1.innerHTML = jsonObject.results[i].FirstName;
+						cell2.innerHTML = jsonObject.results[i].LastName;
+						cell3.innerHTML = jsonObject.results[i].PhoneNumber;
+						cell4.innerHTML = jsonObject.results[i].EmailAddress;
 						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i + 1);
 					}
 
@@ -326,10 +309,10 @@ function cancelEdit(rowNum) {
 	let Phone = data.Phone;
 	let Email = data.Email;
 
-	FirstNameCell.innerHTML = wrapCellItem(FirstName);
-	LastNameCell.innerHTML = wrapCellItem(LastName);
-	PhoneCell.innerHTML = wrapCellItem(Phone);
-	EmailCell.innerHTML = wrapCellItem(Email);
+	FirstNameCell.innerHTML = FirstName;
+	LastNameCell.innerHTML = LastName;
+	PhoneCell.innerHTML = Phone;
+	EmailCell.innerHTML = Email;
 
 	contactMap.delete(rowNum.toString());
 }
@@ -392,21 +375,13 @@ function saveContact(rowNum, contactID) {
 	let Phone = document.getElementById("Phone" + rowNum.toString()).value;
 	let Email = document.getElementById("Email" + rowNum.toString()).value;
 
-	FirstNameCell.innerHTML = wrapCellItem(FirstName);
-	LastNameCell.innerHTML = wrapCellItem(LastName);
-	PhoneCell.innerHTML = wrapCellItem(Phone);
-	EmailCell.innerHTML = wrapCellItem(Email);
+	FirstNameCell.innerHTML = FirstName;
+	LastNameCell.innerHTML = LastName;
+	PhoneCell.innerHTML = Phone;
+	EmailCell.innerHTML = Email;
 
 	updateContact(FirstName, LastName, Phone, Email, contactID);
 	contactMap.delete(rowNum.toString());
-}
-
-function wrapCellItem(item) {
-	return "<p class=\"cellItem\">" + item + "</p>";
-}
-
-function wrapHeadItem(item) {
-	return "<p class=\"headItem\">" + item + "</p>";
 }
 
 function updateContact(FirstName, LastName, Phone, Email, contactID) {
