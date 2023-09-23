@@ -373,5 +373,6 @@ tr:nth-child(even) {
 
 tr:not(:first-child):hover {
 	background-color: rgba(22, 41, 56, .6);
+	color: white;
 }
 
