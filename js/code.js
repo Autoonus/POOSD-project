@@ -240,11 +240,11 @@ function searchContact() {
 					let headCell4 = headRow.insertCell(3);
 					let headCell5 = headRow.insertCell(4);
 
-					headCell1.innerHTML = "First Name";
-					headCell2.innerHTML = "Last Name";
-					headCell3.innerHTML = "Phone Number";
-					headCell4.innerHTML = "Email Address";
-					headCell5.innerHTML = "Edit / Delete";
+					headCell1.outerHTML = "<th>First Name</th>";
+					headCell2.outerHTML = "<th>Last Name</th>";
+					headCell3.outerHTML = "<th>Phone Number</th>";
+					headCell4.outerHTML = "<th>Email Address</th>";
+					headCell5.outerHTML = "<th>Edit / Delete</th>";
 
 					for(let i = 0; i < jsonObject.results.length; ++i){
 						let row = table.insertRow();
