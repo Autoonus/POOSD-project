@@ -100,18 +100,20 @@ header {
 }
 
 #contactContainer {
-	display: inline-flex;
+	display: flex;
 	justify-content: space-between;
 }
 
 .contactTableBox {
 	flex: 0 1 70%;
 	box-sizing: border-box;
+	margin: 15px 10px;
 }
 
 .addContactBox {
-	flex: 0 1 25%;
+	flex: 0 1 30%;
 	box-sizing: border-box;
+	margin: 15px 10px;
 }
 
 .wrapper {
