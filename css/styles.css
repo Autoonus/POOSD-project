@@ -125,8 +125,7 @@ header {
 	backdrop-filter: blur(20px);
 	box-shadow: 0 0 30px rgba(0, 0, 0, .5);
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	overflow: hidden;
 }
 
 .wrapper.active-popup {
@@ -177,7 +176,7 @@ header {
 
 .input-box-search {
 	position: relative;
-	width: 70%;
+	width: 80%;
 	height: 50px;
 	border-bottom: 2px solid #162938;
 	margin: 30px 0;
