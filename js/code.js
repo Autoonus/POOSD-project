@@ -2,8 +2,6 @@ const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
 const contactMap = new Map();
 
-let addFlag = 0;
-
 let ID = 0;
 let FirstName = "";
 let LastName = "";
@@ -316,7 +314,7 @@ function cancelEdit(rowNum) {
 	cancel.style.display = "none";
 
 	let table = document.getElementById("contactTable");
-	let row = table.rows[rowNum + addFlag];
+	let row = table.rows[rowNum];
 	
 	let FirstNameCell = row.cells[0];
 	let LastNameCell = row.cells[1];
@@ -348,7 +346,7 @@ function editContact(rowNum) {
 	cancel.style.display = "inline-block";
 
 	let table = document.getElementById("contactTable");
-	let row = table.rows[rowNum + addFlag];
+	let row = table.rows[rowNum];
 	
 	let FirstNameCell = row.cells[0];
 	let LastNameCell = row.cells[1];
@@ -382,7 +380,7 @@ function saveContact(rowNum, contactID) {
 	cancel.style.display = "none";
 
 	let table = document.getElementById("contactTable");
-	let row = table.rows[rowNum + addFlag];
+	let row = table.rows[rowNum];
 	
 	let FirstNameCell = row.cells[0];
 	let LastNameCell = row.cells[1];
@@ -452,7 +450,7 @@ function deleteContact(contactID) {
 		xhr.onreadystatechange = function() 
 		{
 			if (this.readyState == 4 && this.status == 200) {
-				searchContact("");
+				searchContact();
 			} else {
 				console.log("Error Occured");
 			}
@@ -465,6 +463,7 @@ function deleteContact(contactID) {
 	}
 }
 
+/*
 function showTableAdd() {
 	//Don't add more than one empty row when adding a contact
 	if (addFlag == 1) {
@@ -494,7 +493,7 @@ function showTableAdd() {
 
 function addConfirm() {
 	addContact();
-	searchContact("");
+	searchContact();
 }
 
 function addCancel() {
@@ -502,12 +501,13 @@ function addCancel() {
 	table.deleteRow(1);
 	addFlag = 0;
 }
+*/
 
 function addContact(){
-	let firstName = document.getElementById("addFirstName").value;
-	let lastName = document.getElementById("addLastName").value;
-	let phone = document.getElementById("addPhone").value;
-	let email = document.getElementById("addEmail").value;
+	let firstName = document.getElementById("NewFirstName").value;
+	let lastName = document.getElementById("NewLastName").value;
+	let phone = document.getElementById("NewPhone").value;
+	let email = document.getElementById("NewEmail").value;
 
 	let temp = {FirstName: firstName, LastName: lastName, Phone: phone, Email: email, UserID: ID};
 
