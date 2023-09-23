@@ -234,7 +234,8 @@ header {
 }
 
 .btnAdd-popup {
-	right: -150px;
+	position: absolute;
+	right: -300px;
 	width: 100px;
 	height: 50px;
 	background: #162938;
