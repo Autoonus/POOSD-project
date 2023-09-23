@@ -176,7 +176,7 @@ header {
 
 .input-box-search {
 	position: relative;
-	width: 50%;
+	width: 70%;
 	height: 50px;
 	border-bottom: 2px solid #162938;
 	margin: 30px 0;
@@ -184,7 +184,7 @@ header {
 
 .input-box-search label {
 	position: absolute;
-	top: 70%;
+	top: 50%;
 	left: 5px;
 	transform: translateY(-50%);
 	font-size: 1em;
