@@ -212,6 +212,25 @@ header {
 	padding: 0 35px 0 5px;
 }
 
+.btnSearch-popup {
+	width: 130px;
+	height: 50px;
+	background: transparent;
+	border: 2px solid #fff;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1.1em;
+	color: #fff;
+	font-weight: 500;
+	transition: .5s;
+}
+
+.btnSearch-popup:hover {
+	background: #fff;
+	color: #162938;
+}
+
 .input-box {
 	position: relative;
 	width: 100%;
