@@ -143,8 +143,13 @@ header {
 	
 }
 
+.wrapper-contact .form-box {
+	width: 100%;
+	padding: 40px;
+}
+
 .wrapper .form-box.login {
-	transition: .none;
+	transition: none;
 	transform: translateX(0);
 }
 
