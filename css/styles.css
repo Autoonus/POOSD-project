@@ -113,7 +113,7 @@ header {
 .addContactBox {
 	flex: 0 1 20%;
 	box-sizing: border-box;
-	margin-left: 30px;
+	margin: auto;
 }
 
 .wrapper {
