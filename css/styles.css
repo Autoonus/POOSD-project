@@ -99,6 +99,15 @@ header {
 	color: #162938;
 }
 
+.contactTableBox {
+	flex-basis: 70%;
+	
+}
+
+.addContactBox {
+	flex-basis: 30%;
+}
+
 .wrapper {
 	position: relative;
 	width: 400px;
