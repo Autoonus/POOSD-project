@@ -234,7 +234,7 @@ header {
 	right: -150px;
 	width: 100px;
 	height: 50px;
-	background: #162938;
+	background: rgba(22, 41, 56, .6);
 	border: 2px solid #fff;
 	outline: none;
 	border-radius: 6px;
@@ -255,7 +255,7 @@ header {
 	right: -300px;
 	width: 100px;
 	height: 50px;
-	background: #162938;
+	background: rgba(22, 41, 56, .6);
 	border: 2px solid #fff;
 	outline: none;
 	border-radius: 6px;
