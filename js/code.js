@@ -404,11 +404,11 @@ function saveContact(rowNum, contactID) {
 }
 
 function wrapCellItem(item) {
-	return "<p class=cellItem>" + item + "</p>";
+	return "<p class=\"cellItem\">" + item + "</p>";
 }
 
 function wrapHeadItem(item) {
-	return "<p class=headItem>" + item + "</p>";
+	return "<p class=\"headItem\">" + item + "</p>";
 }
 
 function updateContact(FirstName, LastName, Phone, Email, contactID) {
