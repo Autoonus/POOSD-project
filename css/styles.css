@@ -108,6 +108,7 @@ header {
 	flex: 0 1 70%;
 	box-sizing: border-box;
 	margin: 15px 10px;
+	overflow-y: auto;
 }
 
 .addContactBox {
@@ -352,9 +353,12 @@ header {
 	width: 100%;
 }
 
-th {
+tr:first-child {
 	background-color: rgba(22, 41, 56, .6);
 	color: white;
+}
+
+th {
 	font-size: 18px;
 	padding: 10px;
 }
