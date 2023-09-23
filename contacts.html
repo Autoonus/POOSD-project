@@ -34,39 +34,42 @@
 			<button class="btnAdd-popup" type="submit" id="addContactButton" onclick="showTableAdd();">Add</button>
 		</div>
 	
-		<div id="contactTableDiv" class="contactTableBox">
-			<table id="contactTable">
-				<thead>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Phone</th>
-					<th>Email</th>
-				</thead>
-			</table>
-		</div>
+		<div id="contactContainer">
+			<div id="contactTableDiv" class="contactTableBox">
+				<table id="contactTable">
+					<thead>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+					</thead>
+				</table>
+			</div>
 
-		<div class ="addContactBox">
-			<h2>Add Contact</h2>
-				<div class="input-box">
-					<input type="text" id="NewFirstName" required>
-					<label>First name</label>
-				</div>
-				<div class="input-box">
-					<input type="text" id="NewLastName" required>
-					<label>Last name</label>
-				</div>
-				<div class="input-box">
-					<span class="icon"><ion-icon name="call-outline"></ion-icon></span>
-					<input type="text" id="NewPhone" required>
-					<label>Phone Number</label>
-				</div>
-				<div class="input-box">
-					<span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-					<input type="text" id="NewEmail" required>
-					<label>Email</label>
-				</div>
-				<button type="submit" id="addContactButton" onclick="AddContact();" class="btn">Add</button>
+			<div class ="addContactBox">
+				<h2>Add Contact</h2>
+					<div class="input-box">
+						<input type="text" id="NewFirstName" required>
+						<label>First name</label>
+					</div>
+					<div class="input-box">
+						<input type="text" id="NewLastName" required>
+						<label>Last name</label>
+					</div>
+					<div class="input-box">
+						<span class="icon"><ion-icon name="call-outline"></ion-icon></span>
+						<input type="text" id="NewPhone" required>
+						<label>Phone Number</label>
+					</div>
+					<div class="input-box">
+						<span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+						<input type="text" id="NewEmail" required>
+						<label>Email</label>
+					</div>
+					<button type="submit" id="addContactButton" onclick="AddContact();" class="btn">Add</button>
+			</div>
 		</div>
+		
 	</div>
 	
 </div>

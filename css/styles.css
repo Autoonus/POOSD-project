@@ -99,13 +99,19 @@ header {
 	color: #162938;
 }
 
+#contactContainer {
+	display: inline-flex;
+	justify-content: space-between;
+}
+
 .contactTableBox {
-	flex-basis: 70%;
-	
+	flex: 0 1 70%;
+	box-sizing: border-box;
 }
 
 .addContactBox {
-	flex-basis: 30%;
+	flex: 0 1 25%;
+	box-sizing: border-box;
 }
 
 .wrapper {
