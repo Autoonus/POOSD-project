@@ -214,6 +214,7 @@ header {
 
 .btnSearch-popup {
 	position: absolute;
+	right: 10px;
 	width: 100px;
 	height: 50px;
 	background: #162938;
