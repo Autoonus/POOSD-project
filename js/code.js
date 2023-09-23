@@ -426,8 +426,6 @@ function deleteContact(contactID) {
 		{
 			if (this.readyState == 4 && this.status == 200) {
 				searchContact();
-			} else {
-				console.log("Error Occured");
 			}
 		};
 		xhr.send(jsonPayload);
@@ -501,6 +499,8 @@ function addContact(){
 				let jsonObject = JSON.parse( xhr.responseText );
 				if (jsonObject.error != "") {
 					console.log("Server Error (AddContact)");
+				} else {
+					searchContact();
 				}
 			}
 		};
