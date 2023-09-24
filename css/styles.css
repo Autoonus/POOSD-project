@@ -202,6 +202,7 @@ header {
 	right: 0;
 	width: 45px;
 	height: 45px;
+	background: #fff;
 	font-size: 2em;
 	color: #162938;
 	display: flex;
