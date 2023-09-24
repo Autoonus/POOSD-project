@@ -362,7 +362,7 @@ header {
 	text-decoration: underline;
 }
 
-#contactTable {
+.contactTableBox {
 	width: 1080px;
 	height: 375px;
 }
