@@ -195,9 +195,8 @@ header {
 }
 
 .wrapper-add .form-box {
-	position: absolute;
-	margin-top: 40px;
-	justify-content: center;
+	width: 100%;
+	padding: 40px;
 }
 
 .wrapper-add .icon-close{
