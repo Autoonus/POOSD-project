@@ -193,10 +193,8 @@ header {
 }
 
 .wrapper-add .form-box {
-	width: 100%;
-	padding: 40px;
-	position: center;
-	
+	margin-top: 40px;
+	justify-content: center;
 }
 
 .wrapper .form-box.login {
