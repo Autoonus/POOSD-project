@@ -448,7 +448,7 @@ header {
 	text-decoration: underline;
 }
 
-.contactTableDiv {
+.contactContainer {
 	width: 1080px;
 	height: 375px;
 	overflow: scroll;
