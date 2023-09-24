@@ -2,6 +2,8 @@ const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
 const contactMap = new Map();
 
+import * as encrypt from "/md5.js";
+
 let ID = 0;
 let FirstName = "";
 let LastName = "";
@@ -41,7 +43,7 @@ function login(Login, Password) {
 		
 				if( jsonObject.ID < 1 ) 
 				{		
-					document.getElementById("loginResult").innerHTML = hash;
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
 
@@ -51,9 +53,9 @@ function login(Login, Password) {
 
 				setLoginCookie();
 
-				//window.location.href = "contacts.html";
+				window.location.href = "contacts.html";
 
-				//searchContact();
+				searchContact();
 			}
 		};
 		xhr.send(jsonPayload);
