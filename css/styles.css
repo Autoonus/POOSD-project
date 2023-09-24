@@ -451,7 +451,7 @@ header {
 .contactTableBox {
 	width: 1080px;
 	height: 375px;
-	overflow: scroll;
+	overflow-y: auto;
 }
 
 tr:first-child {
