@@ -41,7 +41,7 @@ function login(Login, Password) {
 		
 				if( jsonObject.ID < 1 ) 
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("loginResult").innerHTML = hash;
 					return;
 				}
 
@@ -51,9 +51,9 @@ function login(Login, Password) {
 
 				setLoginCookie();
 
-				window.location.href = "contacts.html";
+				//window.location.href = "contacts.html";
 
-				searchContact();
+				//searchContact();
 			}
 		};
 		xhr.send(jsonPayload);
