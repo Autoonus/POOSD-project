@@ -159,7 +159,6 @@ header {
 	justify-content: center;
 	align-items: center;
 	transition: transform .1s ease, height .2s ease;
-	overflow: hidden;
 }
 
 .wrapper-about {
