@@ -195,20 +195,6 @@ header {
 	padding: 40px;
 }
 
-.wrapper-add .icon-close{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 45px;
-	height: 45px;
-	background: #fff;
-	font-size: 2em;
-	color: #162938;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .wrapper .form-box.login {
 	transition: none;
 	transform: translateX(0);
