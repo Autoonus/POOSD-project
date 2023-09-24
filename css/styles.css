@@ -149,15 +149,17 @@ header {
 .wrapper-add {
 	position: relative;
 	width: 400px;
-	height: 600px;
+	height: 440px;
 	background: transparent;
 	border: 2px solid rgba(255, 255, 255, .5);
 	border-radius: 20px;
 	backdrop-filter: blur(20px);
 	box-shadow: 0 0 30px rgba(0, 0, 0, .5);
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform .1s ease, height .2s ease;
 	overflow: hidden;
-	margin-left: 30px;
 }
 
 .wrapper-about {
