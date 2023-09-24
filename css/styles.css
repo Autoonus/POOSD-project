@@ -363,7 +363,8 @@ header {
 }
 
 #contactTable {
-	width: 100%;
+	width: 1080px;
+	height: 375px;
 }
 
 tr:first-child {
