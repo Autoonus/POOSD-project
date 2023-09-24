@@ -226,42 +226,56 @@ function searchContact() {
 			xhr.onreadystatechange = function() 
 			{
 				if (this.readyState == 4 && this.status == 200) 
-				{
+				{	
+					
 					let jsonObject = JSON.parse( xhr.responseText );
 					let table = document.getElementById("contactTable");
-					console.log(jsonObject);
+					let addPrompt = document.getElementById("addPrompt");
 
-					table.innerHTML = "";
+					//if there are no results, do not show the table and show a prompt to add new contacts.
+					if (!jsonObject.results) {
+						table.style.display = "table";
+						addPrompt.style.display = "none";
 
-					let header = table.createTHead();
-					let headRow = header.insertRow(0);
+					} else {
 
-					let headCell1 = headRow.insertCell(0);
-					let headCell2 = headRow.insertCell(1);
-					let headCell3 = headRow.insertCell(2);
-					let headCell4 = headRow.insertCell(3);
-					let headCell5 = headRow.insertCell(4);
+						table.innerHTML = "";
 
-					headCell1.outerHTML = "<th>First Name</th>";
-					headCell2.outerHTML = "<th>Last Name</th>";
-					headCell3.outerHTML = "<th>Phone Number</th>";
-					headCell4.outerHTML = "<th>Email Address</th>";
-					headCell5.outerHTML = "<th>Edit / Delete</th>";
+						let header = table.createTHead();
+						let headRow = header.insertRow(0);
 
-					for(let i = 0; i < jsonObject.results.length; ++i){
-						let row = table.insertRow();
-						let cell1 = row.insertCell(0);
-						let cell2 = row.insertCell(1);
-						let cell3 = row.insertCell(2);
-						let cell4 = row.insertCell(3);
-						let cell5 = row.insertCell(4);
+						let headCell1 = headRow.insertCell(0);
+						let headCell2 = headRow.insertCell(1);
+						let headCell3 = headRow.insertCell(2);
+						let headCell4 = headRow.insertCell(3);
+						let headCell5 = headRow.insertCell(4);
 
-						cell1.innerHTML = jsonObject.results[i].FirstName;
-						cell2.innerHTML = jsonObject.results[i].LastName;
-						cell3.innerHTML = jsonObject.results[i].PhoneNumber;
-						cell4.innerHTML = jsonObject.results[i].EmailAddress;
-						cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i + 1);
+						headCell1.outerHTML = "<th>First Name</th>";
+						headCell2.outerHTML = "<th>Last Name</th>";
+						headCell3.outerHTML = "<th>Phone Number</th>";
+						headCell4.outerHTML = "<th>Email Address</th>";
+						headCell5.outerHTML = "<th>Edit / Delete</th>";
+
+						for(let i = 0; i < jsonObject.results.length; ++i){
+							let row = table.insertRow();
+							let cell1 = row.insertCell(0);
+							let cell2 = row.insertCell(1);
+							let cell3 = row.insertCell(2);
+							let cell4 = row.insertCell(3);
+							let cell5 = row.insertCell(4);
+
+							cell1.innerHTML = jsonObject.results[i].FirstName;
+							cell2.innerHTML = jsonObject.results[i].LastName;
+							cell3.innerHTML = jsonObject.results[i].PhoneNumber;
+							cell4.innerHTML = jsonObject.results[i].EmailAddress;
+							cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i + 1);
+						}
+
+						table.style.display = "none";
+						addPrompt.style.display = "block";
 					}
+
+					
 
 					resolve(true);
 				}
