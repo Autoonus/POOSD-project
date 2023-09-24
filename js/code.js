@@ -2,8 +2,6 @@ const urlBase = 'http://the-otter.com/LAMPAPI';
 const extension = 'php';
 const contactMap = new Map();
 
-import * as encrypt from "/md5.js";
-
 let ID = 0;
 let FirstName = "";
 let LastName = "";
