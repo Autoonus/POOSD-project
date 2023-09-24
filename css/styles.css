@@ -196,7 +196,47 @@ header {
 	right: 0;
 	width: 45px;
 	height: 45px;
-	background: #162938;
+	background: #2e4e51;
+	font-size: 2em;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom-left-radius: 20px;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.wrapper-add {
+	position: relative;
+	width: 400px;
+	height: 480px;
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .5);
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform .1s ease, height .2s ease;
+	overflow: hidden;
+	margin-left: 30px
+}
+
+.wrapper-add .form-box {
+	width: 100%;
+	padding: 40px;
+	
+}
+
+.wrapper-add .icon-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 45px;
+	height: 45px;
+	background: #2e4e51;
 	font-size: 2em;
 	color: #fff;
 	display: flex;

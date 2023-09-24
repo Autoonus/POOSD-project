@@ -30,7 +30,7 @@
 			<input class="InputBox" type="text" id="searchText" required>
 			<label class="EntryLabel" id="searchLabel">Search</label>
 			<button class="btnSearch-popup" type="submit" id="searchContactButton" onclick="searchContact();">Search</button>
-			<button class="btnAdd-popup" type="submit" id="addContactButton" onclick="showTableAdd();">Add</button>
+			<button class="btnAdd-popup" type="submit" id="addContactButton">Add</button>
 		</div>
 	
 		<div id="contactContainer">
@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper-add">
 	<spana class="icon-close">
 		<ion-icon name="close-circle"></ion-icon>
 	</spana>
@@ -76,6 +76,22 @@
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+	const wrapper = document.querySelector('.wrapper-add');
+	const contact = document.querySelector('.wrapper-contact');
+	const btnadd = document.querySelector('.btnAdd-popup');
+	const iconClose = document.querySelector('.icon-close');
+	
+	btnadd.addEventListener('click', ()=> {
+		wrapper.classList.add('active-popup');
+		contact.classList.add('active-popup')
+	});
+
+	iconClose.addEventListener('click', ()=> {
+		wrapper.classList.remove('active-popup');
+		contact.classList.remove('active-popup')
+	});
+</script>
 
 </body>
 </html>
