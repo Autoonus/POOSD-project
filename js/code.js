@@ -234,8 +234,8 @@ function searchContact() {
 
 					//if there are no results, do not show the table and show a prompt to add new contacts.
 					if (jsonObject.result == "") {
-						table.style.display = "table";
-						addPrompt.style.display = "none";
+						table.style.display = "none";
+						addPrompt.style.display = "block";
 
 					} else {
 
@@ -271,8 +271,8 @@ function searchContact() {
 							cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i + 1);
 						}
 
-						table.style.display = "none";
-						addPrompt.style.display = "block";
+						table.style.display = "table";
+						addPrompt.style.display = "none";
 					}
 
 					
