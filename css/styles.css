@@ -448,6 +448,10 @@ header {
 	text-decoration: underline;
 }
 
+.contactTableDiv {
+	overflow-y: auto;
+}
+
 .contactTableBox {
 	width: 1080px;
 	height: 375px;
