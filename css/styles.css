@@ -245,7 +245,7 @@ header {
 
 .btnSearch-popup {
 	position: absolute;
-	right: -100px;
+	right: -120px;
 	width: 100px;
 	height: 50px;
 	background: rgba(22, 41, 56, .6);
@@ -266,7 +266,7 @@ header {
 
 .btnAdd-popup {
 	position: absolute;
-	right: -200px;
+	right: -240px;
 	width: 100px;
 	height: 50px;
 	background: rgba(22, 41, 56, .6);
