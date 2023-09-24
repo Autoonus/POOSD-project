@@ -20,7 +20,9 @@ function login(Login, Password) {
 	FirstName = "";
 	LastName = "";
 	
-	let tmp = {Login:Login, Password:Password};
+	let hash = md5(Password);
+
+	let tmp = {Login:Login, Password:hash};
 	let jsonPayload = JSON.stringify(tmp);
 	
 	let url = urlBase + '/Login.' + extension;
@@ -134,7 +136,7 @@ function register() {
 	}
 	
 	let Login = document.getElementById("newUser").value;
-	let Password = document.getElementById("newPassword").value;
+	let Password = md5(document.getElementById("newPassword").value);
 	let FirstName = document.getElementById("FirstName").value;
 	let LastName = document.getElementById("LastName").value;
 	
