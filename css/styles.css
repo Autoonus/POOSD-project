@@ -192,6 +192,12 @@ header {
 	padding: 40px;
 }
 
+.wrapper-add .form-box {
+	width: 100%;
+	padding: 40px;
+	
+}
+
 .wrapper .form-box.login {
 	transition: none;
 	transform: translateX(0);
