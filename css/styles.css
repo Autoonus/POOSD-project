@@ -146,6 +146,20 @@ header {
 	margin-left: 30px;
 }
 
+.wrapper-add {
+	position: relative;
+	width: 400px;
+	height: 600px;
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .5);
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+	display: flex;
+	overflow: hidden;
+	margin-left: 30px;
+}
+
 .wrapper-about {
 	position: relative;
 	width: 1200px;
