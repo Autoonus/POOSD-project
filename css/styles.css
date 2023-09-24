@@ -145,6 +145,7 @@ header {
 	display: flex;
 	overflow: hidden;
 	margin-left: 30px;
+	transform: translateX(200px);
 }
 
 .wrapper-add {
