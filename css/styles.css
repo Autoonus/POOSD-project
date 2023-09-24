@@ -221,6 +221,7 @@ header {
 	align-items: center;
 	transition: transform .1s ease, height .2s ease;
 	overflow: hidden;
+	margin-left: 30px;
 	transform: scale(0);
 }
 
