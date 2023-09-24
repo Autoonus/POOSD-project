@@ -448,12 +448,12 @@ header {
 }
 
 .contactTableDiv {
-	overflow-y: scroll;
 }
 
 .contactTableBox {
 	width: 1080px;
 	height: 414px;
+	overflow-y: scroll;
 }
 
 tr:first-child {
