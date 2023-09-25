@@ -564,10 +564,10 @@ function addContact(){
 		return;
 	}
 
-	document.getElementById("NewFirstName").innerText = "";
-	document.getElementById("NewLastName").innerText = "";
-	document.getElementById("NewPhone").innerText = "";
-	document.getElementById("NewEmail").innerText = "";
+	document.getElementById("NewFirstName").value = "";
+	document.getElementById("NewLastName").value = "";
+	document.getElementById("NewPhone").value = "";
+	document.getElementById("NewEmail").value = "";
 
 	let temp = {FirstName: firstName, LastName: lastName, Phone: phone, Email: email, UserID: ID};
 
