@@ -478,6 +478,7 @@ thead tr {
 #addPrompt {
 	font-size: 20px;
 	color: black;
+	text-align: center;
 }
 
 .ionWhite {
