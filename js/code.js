@@ -190,6 +190,7 @@ function registerInputsOK() {
 
 function attemptRegister() {
 	document.getElementById("registerResult").innerHTML = "Attempting registration...";
+	let newUser = document.getElementById("newUser").value;
 	isAvailable(newUser).then((available) => {
 		if (!available) {
 			document.getElementById("registerResult").innerHTML = "Username already Taken";
