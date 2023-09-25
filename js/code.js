@@ -256,8 +256,10 @@ function searchContact() {
 						headCell4.outerHTML = "<th>Email Address</th>";
 						headCell5.outerHTML = "<th>Edit / Delete</th>";
 
+						let tbody = table.createTBody();
+
 						for(let i = 0; i < jsonObject.results.length; ++i){
-							let row = table.insertRow();
+							let row = tbody.insertRow();
 							let cell1 = row.insertCell(0);
 							let cell2 = row.insertCell(1);
 							let cell3 = row.insertCell(2);

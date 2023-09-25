@@ -447,14 +447,16 @@ header {
 	text-decoration: underline;
 }
 
-.contactTableDiv {
+.contactTableBox {
+	width: auto;
+	height: 400px;
+	overflow-y: auto;
 }
 
-.contactTableBox {
-	width: 1080px;
-	height: 414px;
-	overflow-y: scroll;
-}
+.contactTableBox thead th {
+	position: sticky;
+	top: 0px; 
+  }
 
 tr:first-child {
 	background-color: rgba(22, 41, 56, .6);
