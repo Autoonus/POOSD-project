@@ -445,6 +445,7 @@ async function presentAlert(contactID) {
 		  },
 		},
 	];
+	alert.present();
 }
 
 
