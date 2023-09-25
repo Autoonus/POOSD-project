@@ -131,6 +131,7 @@ function checkValidSession() {
 
 function registerInputsOK() {
 	let reqs = document.getElementById("reqs");
+	let output = document.getElementById("notice");
 	let strikes = 0;
 
 	let notice = "";
@@ -191,7 +192,7 @@ function registerInputsOK() {
 		return true;
 	} else {
 		reqs.style.display = "block";
-		reqs.innerHTML = notice;
+		output.innerHTML = notice;
 		return false;
 	}
 }

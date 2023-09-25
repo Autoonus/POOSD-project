@@ -102,7 +102,7 @@ header {
 .validate {
 	position: absolute;
 	left: 60%;
-	width: 300px;
+	width: 350px;
 	height: auto;
 	background: transparent;
 	border: 2px solid rgba(255, 255, 255, .5);
@@ -115,6 +115,10 @@ header {
 	transition: transform .1s ease, height .2s ease;
 	overflow: hidden;
 	margin-left: 30px
+}
+
+#notice {
+	padding: 10px 20px;
 }
 
 .wrapper {
