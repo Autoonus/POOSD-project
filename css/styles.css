@@ -436,7 +436,7 @@ header {
 	overflow-y: auto;
 }
 
-#contactContainer thead th {
+#contactContainer thead tr {
 	position: sticky;
 	top: 0px; 
   }
