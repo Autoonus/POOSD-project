@@ -129,7 +129,7 @@ function checkValidSession() {
 	}
 }
 
-async function registerInputsOK() {
+function registerInputsOK() {
 	let reqs = document.getElementById("reqs");
 	let output = document.getElementById("notice");
 	let strikes = 0;
@@ -179,7 +179,7 @@ async function registerInputsOK() {
 		notice+= "Password must contain only letters, numbers, and special characters<br>";
 	}
 
-	await isAvailable(newUser).then((available) => {
+	isAvailable(newUser).then((available) => {
 		if (!available) {
 			strikes++;
 			notice+= "Username was already taken<br>";
@@ -194,7 +194,7 @@ async function registerInputsOK() {
 		}
 
 	}).catch((err) => {
-		console.log("Promise error");
+		console.log("Promise error")
 		return false;
 	});
 }
