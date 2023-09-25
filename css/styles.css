@@ -119,6 +119,7 @@ header {
 
 .name {
 	float:left;
+	margin:20px;
 }
 
 #notice {
