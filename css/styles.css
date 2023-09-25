@@ -121,6 +121,10 @@ header {
 	padding: 10px 20px;
 }
 
+#reqHeader {
+	text-align: center;
+}
+
 .wrapper {
 	position: relative;
 	width: 400px;
