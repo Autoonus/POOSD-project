@@ -234,7 +234,7 @@ function searchContact() {
 					let addPrompt = document.getElementById("addPrompt");
 
 					//if there are no results, do not show the table and show a prompt to add new contacts.
-					if (jsonObject.result == "") {
+					if (jsonObject.error != "") {
 						table.style.display = "none";
 						addPrompt.style.display = "block";
 
