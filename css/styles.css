@@ -30,6 +30,7 @@ header {
 }
 
 .logo {
+	position: absolute;
 	font-size: 2em;
 	color: #fff;
 	user-select: none;
