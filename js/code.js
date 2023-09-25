@@ -425,13 +425,6 @@ function editContact(rowNum) {
 	let Phone = PhoneCell.innerText;
 	let Email = EmailCell.innerText;
 
-	let notice = validContact(FirstName, LastName, Phone, Email);
-	if (notice != "") {
-		//display toast for formatting error
-		contactFormatNotice(notice);
-		return;
-	}
-
 	edit.style.display = "none";
 	del.style.display = "none";
 	save.style.display = "inline-block";
@@ -453,11 +446,6 @@ function saveContact(rowNum, contactID) {
 	let save = document.getElementById("saveButton" + rowNum.toString());
 	let cancel = document.getElementById("cancelButton" + rowNum.toString());
 
-	edit.style.display = "inline-block";
-	del.style.display = "inline-block";
-	save.style.display = "none";
-	cancel.style.display = "none";
-
 	let table = document.getElementById("contactTable");
 	let row = table.rows[rowNum];
 	
@@ -470,6 +458,18 @@ function saveContact(rowNum, contactID) {
 	let LastName = document.getElementById("LastName" + rowNum.toString()).value;
 	let Phone = document.getElementById("Phone" + rowNum.toString()).value;
 	let Email = document.getElementById("Email" + rowNum.toString()).value;
+
+	let notice = validContact(FirstName, LastName, Phone, Email);
+	if (notice != "") {
+		//display toast for formatting error
+		contactFormatNotice(notice);
+		return;
+	}
+
+	edit.style.display = "inline-block";
+	del.style.display = "inline-block";
+	save.style.display = "none";
+	cancel.style.display = "none";
 
 	FirstNameCell.innerHTML = FirstName;
 	LastNameCell.innerHTML = LastName;
