@@ -164,15 +164,6 @@ async function registerInputsOK() {
 		notice+= "Username must contain only letters and numbers<br>";
 	}
 
-	await isAvailable(newUser).then((available) => {
-		if (!available) {
-			strikes++;
-			notice+= "Username was already taken<br>";
-		}
-	}).catch((err) => {
-		console.log("Promise error")
-	});
-
 	if (newPassword.length < 7) {
 		strikes++;
 		notice+= "Password must be at least 7 characters<br>";
@@ -188,13 +179,24 @@ async function registerInputsOK() {
 		notice+= "Password must contain only letters, numbers, and special characters<br>";
 	}
 
-	if (strikes == 0) {
-		return true;
-	} else {
-		reqs.style.display = "block";
-		output.innerHTML = notice;
+	await isAvailable(newUser).then((available) => {
+		if (!available) {
+			strikes++;
+			notice+= "Username was already taken<br>";
+		}
+
+		if (strikes == 0) {
+			return true;
+		} else {
+			reqs.style.display = "block";
+			output.innerHTML = notice;
+			return false;
+		}
+
+	}).catch((err) => {
+		console.log("Promise error");
 		return false;
-	}
+	});
 }
 
 function register() {
