@@ -488,3 +488,8 @@ tr:not(:first-child):hover {
 	font-size: 20px;
 	color: black;
 }
+
+#ionEdit {
+	color: white;
+	size: large;
+}
