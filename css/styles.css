@@ -484,21 +484,21 @@ thead tr {
 }
 
 #editButton {
-	border-radius: 50%;
+	border-radius: 4px;
 	background-color: #162938;
 }
 
 #delButton {
-	border-radius: 50%;
+	border-radius: 4px;
 	background-color: #aa0000;
 }
 
 #saveButton {
-	border-radius: 50%;
+	border-radius: 4px;
 	background-color: #08b103;
 }
 
 #cancelButton {
-	border-radius: 50%;
+	border-radius: 4px;
 	background-color: #aa0000;
 }
