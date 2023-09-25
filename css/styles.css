@@ -436,9 +436,14 @@ header {
 	overflow-y: auto;
 }
 
-#contactContainer thead tr {
-	position: sticky;
-	top: 0px; 
+#contactContainer thead {
+	display: block;
+}
+
+#contactContainer tbody {
+	display: block;
+	overflow: auto;
+	height: 100%;
 }
 
 table {
