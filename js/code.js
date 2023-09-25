@@ -164,7 +164,7 @@ function registerInputsOK() {
 		notice+= "Username must contain only letters and numbers<br>";
 	}
 
-	isAvailable(newUser).then((available) => {
+	await isAvailable(newUser).then((available) => {
 		if (!available) {
 			strikes++;
 			notice+= "Username was already taken<br>";
