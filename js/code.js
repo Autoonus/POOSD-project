@@ -444,10 +444,7 @@ async function presentAlert(contactID) {
 			deleteContact(contactID);
 		  },
 		},
-	  ];
-
-    document.body.appendChild(alert);
-    await alert.present();
+	];
 }
 
 
