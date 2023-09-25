@@ -550,7 +550,7 @@ function validContact(fn, ln, phone, email) {
 
 	let phoneFormat = /^(1-)?\d{3}-\d{3}-\d{4}$/;
 	if (!phoneFormat.test(phone)) {
-		notice+= "Invalid phone number format<br>-Please use XXX-XXX-XXXX";
+		notice+= "Invalid phone number format<br>-Please use XXX-XXX-XXXX<br>";
 	}
 
 	let emailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -614,5 +614,5 @@ function contactFormatNotice(notice) {
 	var x = document.getElementById("snackbar");
 	x.className = "show";
 	x.innerHTML = notice;
-	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
   }
