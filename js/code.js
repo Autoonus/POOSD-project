@@ -129,19 +129,86 @@ function checkValidSession() {
 	}
 }
 
+function registerInputsOK() {
+	let reqs = document.getElementById("reqs");
+	let strikes = 0;
+
+	let notice = "";
+
+	let fname = document.getElementById("FirstName").value;
+	let lname = document.getElementById("LastName").value;
+	let newUser = document.getElementById("newUser").value;
+	let newPass = document.getElementById("newPassword").value;
+
+	var userAllowed = /^[0-9A-Za-z]*$/;
+	var passAllowed  = /^[0-9A-Za-z!@#$%^&*]*$/;
+
+	if (fname.length == 0) {
+		strikes++;
+		notice+= "First Name cannot be empty<br>";
+	}
+
+	if (lname.length == 0) {
+		strikes++;
+		notice+= "Last Name cannot be empty<br>";
+	}
+
+	if (newUser.length == 0) {
+		strikes++;
+		notice+= "Username cannot be empty<br>";
+	}
+
+	if (!(userAllowed.test(newUser))) {
+		strikes++;
+		notice+= "Username must contain only letters and numbers<br>";
+	}
+
+	isAvailable(newUser).then((available) => {
+		if (!available) {
+			strikes++;
+			notice+= "Username was already taken<br>";
+		}
+	}).catch((err) => {
+		console.log("Promise error")
+	});
+
+	if (newPassword.length < 7) {
+		strikes++;
+		notice+= "Password must be at least 7 characters<br>";
+	}
+
+	if (newPassword.length > 50) {
+		strikes++;
+		notice+= "Password must be at most 50 characters<br>";
+	}
+
+	if (!(passAllowed.test(newPassword))) {
+		strikes++;
+		notice+= "Password must contain only letters, numbers, and special characters<br>";
+	}
+
+	if (strikes == 0) {
+		return true;
+	} else {
+		reqs.style.display = "block";
+		reqs.innterHTML = notice;
+		return false;
+	}
+}
+
 function register() {
-	if (document.getElementById("registerButton").className == "DisabledButton") {
-		document.getElementById("registerResult").innerHTML = "Please Meet Username and Password Criteria";
+	document.getElementById("registerResult").innerHTML = "Attempting registration...";
+
+	if (!registerInputsOK()) {
+		document.getElementById("registerResult").innerHTML = "Invalid inputs...";
 		return;
 	}
-	
+
 	let Login = document.getElementById("newUser").value;
 	let Password = document.getElementById("newPassword").value;
 	let hash= md5(Password);
 	let FirstName = document.getElementById("FirstName").value;
 	let LastName = document.getElementById("LastName").value;
-	
-	document.getElementById("registerResult").innerHTML = "Attempting registration...";
 
 	let tmp = {Login:Login, Password:hash, FirstName:FirstName, LastName:LastName};
 	let jsonPayload = JSON.stringify(tmp);
@@ -175,7 +242,7 @@ function register() {
 
 }
 
-function isAvailable(Login, userAvailable) {
+function isAvailable(Login) {
 	return new Promise((resolve, reject) => {
 		let tmp = {Login:Login};
 		let jsonPayload = JSON.stringify(tmp);
