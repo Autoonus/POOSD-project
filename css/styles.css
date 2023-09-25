@@ -489,7 +489,32 @@ tr:not(:first-child):hover {
 	color: black;
 }
 
-#ionEdit {
+.ionWhite {
 	color: white;
-	size: large;
+	font-size: 24px;
+}
+
+.ionBlack {
+	color: black;
+	font-size: 24px;
+}
+
+#editButton {
+	border-radius: 50%;
+	background-color: #162938;
+}
+
+#delButton {
+	border-radius: 50%;
+	background-color: #aa0000;
+}
+
+#saveButton {
+	border-radius: 50%;
+	background-color: #08b103;
+}
+
+#cancelButton {
+	border-radius: 50%;
+	background-color: #aa0000;
 }
