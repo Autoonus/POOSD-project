@@ -136,13 +136,14 @@ function register() {
 	}
 	
 	let Login = document.getElementById("newUser").value;
-	let Password = md5(document.getElementById("newPassword").value);
+	let Password = document.getElementById("newPassword").value;
+	let hash= md5(Password);
 	let FirstName = document.getElementById("FirstName").value;
 	let LastName = document.getElementById("LastName").value;
 	
 	document.getElementById("registerResult").innerHTML = "Attempting registration...";
 
-	let tmp = {Login:Login, Password:Password, FirstName:FirstName, LastName:LastName};
+	let tmp = {Login:Login, Password:hash, FirstName:FirstName, LastName:LastName};
 	let jsonPayload = JSON.stringify(tmp);
 	
 	let url = urlBase + '/Register.' + extension;
@@ -276,8 +277,6 @@ function searchContact() {
 						table.style.display = "table";
 						addPrompt.style.display = "none";
 					}
-
-					
 
 					resolve(true);
 				}
@@ -459,46 +458,6 @@ function deleteContact(contactID) {
 	}
 }
 
-/*
-function showTableAdd() {
-	//Don't add more than one empty row when adding a contact
-	if (addFlag == 1) {
-		return;
-	}
-
-	let table = document.getElementById("contactTable");
-	let row = table.insertRow(1);
-
-	addFlag = 1;
-
-	let cell1 = row.insertCell(0);
-	let cell2 = row.insertCell(1);
-	let cell3 = row.insertCell(2);
-	let cell4 = row.insertCell(3);
-	let cell5 = row.insertCell(4);
-
-	cell1.innerHTML = "<input type='text' id='addFirstName' placeholder='First Name'>"
-	cell2.innerHTML = "<input type='text' id='addLastName' placeholder='Last Name'>"
-	cell3.innerHTML = "<input type='text' id='addPhone' placeholder='Phone'>"
-	cell4.innerHTML = "<input type='text' id='addEmail' placeholder='Email'>"
-	
-	let addConfirm = "<button class='Selected' id='addConfirm' type='button' class='buttons' onclick='addConfirm();'>Add</button> ";
-	let addCancel = "<button class='Selected' id='addCancel' type='button' class='buttons' onclick='addCancel();'> X </button>";
-	cell5.innerHTML = addConfirm + addCancel;
-}
-
-function addConfirm() {
-	addContact();
-	searchContact();
-}
-
-function addCancel() {
-	let table = document.getElementById("contactTable");
-	table.deleteRow(1);
-	addFlag = 0;
-}
-*/
-
 function addContact(){
 	let firstName = document.getElementById("NewFirstName").value;
 	let lastName = document.getElementById("NewLastName").value;
@@ -536,33 +495,6 @@ function addContact(){
 	}
 }
 
-function showLogin() {
-	document.getElementById("loginOption").className = "Selected";
-	document.getElementById("registerOption").className = "Unselected";
-	document.getElementById("registerDiv").style.display = "none";
-	document.getElementById("loginDiv").style.display = "block";
-}
-
-function showRegister() {
-	document.getElementById("loginOption").className = "Unselected";
-	document.getElementById("registerOption").className = "Selected";
-	document.getElementById("registerDiv").style.display = "block";
-	document.getElementById("loginDiv").style.display = "none";
-}
-
 function showHeader() {
 	document.getElementById("welcomeHeader").innerHTML = "Welcome, " + FirstName + " " + LastName + "!";
-}
-
-function disable(btn) {
-	btn.className = "DisabledButton";
-}
-
-function enable(btn) {
-	btn.className = "Button";
-}
-
-function setup() {
-	showLogin();
-	disable(document.getElementById("registerButton"));
 }
