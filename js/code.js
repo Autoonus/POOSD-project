@@ -193,9 +193,8 @@ function attemptRegister() {
 	let newUser = document.getElementById("newUser").value;
 	isAvailable(newUser).then((available) => {
 		if (!available) {
-			document.getElementById("registerResult").innerHTML = "Username already Taken";
+			document.getElementById("registerResult").innerHTML = "Username already taken";
 		} else {
-			console.log("Username available...");
 			register();
 		}
 	}).catch((err) => {
@@ -265,10 +264,8 @@ function isAvailable(Login) {
 					let jsonObject = JSON.parse( xhr.responseText );
 
 					if (jsonObject.error == '') {
-						console.log("Username available php");
 						resolve(true);
 					} else {
-						console.log("Username not available php");
 						resolve(false);
 					}
 
