@@ -614,5 +614,5 @@ function contactFormatNotice(notice) {
 	var x = document.getElementById("snackbar");
 	x.className = "show";
 	x.innerHTML = notice;
-	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
   }
