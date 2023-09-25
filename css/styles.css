@@ -99,23 +99,6 @@ header {
 	color: #162938;
 }
 
-#contactContainer {
-	display: flex;
-	justify-content: space-between;
-}
-
-.contactTableBox {
-	flex: 0 1 70%;
-	box-sizing: border-box;
-	overflow-y: auto;
-}
-
-.addContactBox {
-	flex: 0 1 25%;
-	box-sizing: border-box;
-	margin: auto;
-}
-
 .wrapper {
 	position: relative;
 	width: 400px;
