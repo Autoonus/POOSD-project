@@ -130,10 +130,6 @@ function checkValidSession() {
 }
 
 function registerInputsOK() {
-	let reqs = document.getElementById("reqs");
-	let output = document.getElementById("notice");
-	let strikes = 0;
-
 	let notice = "";
 
 	let fname = document.getElementById("FirstName").value;
@@ -145,46 +141,38 @@ function registerInputsOK() {
 	var passAllowed  = /^[0-9A-Za-z!@#$%^&*]*$/;
 
 	if (fname.length == 0) {
-		strikes++;
 		notice+= "First Name cannot be empty<br>";
 	}
 
 	if (lname.length == 0) {
-		strikes++;
 		notice+= "Last Name cannot be empty<br>";
 	}
 
 	if (newUser.length == 0) {
-		strikes++;
 		notice+= "Username cannot be empty<br>";
 	}
 
 	if (!(userAllowed.test(newUser))) {
-		strikes++;
 		notice+= "Username must contain only letters and numbers<br>";
 	}
 
 	if (newPassword.length < 7) {
-		strikes++;
 		notice+= "Password must be at least 7 characters<br>";
 	}
 
 	if (newPassword.length > 50) {
-		strikes++;
 		notice+= "Password must be at most 50 characters<br>";
 	}
 
 	if (!(passAllowed.test(newPassword))) {
-		strikes++;
 		notice+= "Password must contain only letters, numbers, and special characters<br>";
 	}
 
-	if (strikes == 0) {
-		return true;
-	} else {
-		reqs.style.display = "block";
-		output.innerHTML = notice;
+	if (notice != "") {
+		showNotice(notice);
 		return false;
+	} else {
+		return true;
 	}
 }
 
@@ -462,7 +450,7 @@ function saveContact(rowNum, contactID) {
 	let notice = validContact(FirstName, LastName, Phone, Email);
 	if (notice != "") {
 		//display toast for formatting error
-		contactFormatNotice(notice);
+		showNotice(notice);
 		return;
 	}
 
@@ -572,7 +560,7 @@ function addContact(){
 	let notice = validContact(firstName, lastName, phone, email);
 	if (notice != "") {
 		//display toast for formatting error
-		contactFormatNotice(notice);
+		showNotice(notice);
 		return;
 	}
 
@@ -611,9 +599,9 @@ function showHeader() {
 	document.getElementById("welcomeHeader").innerHTML = "Welcome, " + FirstName + " " + LastName + "!";
 }
 
-function contactFormatNotice(notice) {
+function showNotice(notice) {
 	var x = document.getElementById("snackbar");
 	x.className = "show";
 	x.innerHTML = notice;
-	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5500);
-  }
+	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10500);
+}
