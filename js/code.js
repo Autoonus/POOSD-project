@@ -412,11 +412,6 @@ function editContact(rowNum) {
 	let save = document.getElementById("saveButton" + rowNum.toString());
 	let cancel = document.getElementById("cancelButton" + rowNum.toString());
 
-	edit.style.display = "none";
-	del.style.display = "none";
-	save.style.display = "inline-block";
-	cancel.style.display = "inline-block";
-
 	let table = document.getElementById("contactTable");
 	let row = table.rows[rowNum];
 	
@@ -429,6 +424,18 @@ function editContact(rowNum) {
 	let LastName = LastNameCell.innerText;
 	let Phone = PhoneCell.innerText;
 	let Email = EmailCell.innerText;
+
+	let notice = validContact(FirstName, LastName, Phone, Email);
+	if (notice != "") {
+		//display toast for formatting error
+		contactFormatNotice(notice);
+		return;
+	}
+
+	edit.style.display = "none";
+	del.style.display = "none";
+	save.style.display = "inline-block";
+	cancel.style.display = "inline-block";
 
 	let temp  = {FirstName:FirstName, LastName:LastName, Phone:Phone, Email:Email};
 	let data = JSON.stringify(temp);
@@ -530,11 +537,43 @@ function deleteContact(contactID) {
 	}
 }
 
+function validContact(fn, ln, phone, email) {
+	let notice = "";
+
+	if (fn.length == 0) {
+		notice+= "Requires a First Name<br>";
+	}
+
+	if (ln.length == 0) {
+		notice+= "Requires a Last Name<br>";
+	}
+
+	let phoneFormat = /^(1-)?\d{3}-\d{3}-\d{4}$/;
+	if (!phoneFormat.test(phone)) {
+		notice+= "Invalid phone number format<br>-Please use XXX-XXX-XXXX";
+	}
+
+	let emailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	if (!emailFormat.test(email)) {
+		notice+= "Please enter a valid email<br>";
+	}
+
+	return notice;
+}
+
 function addContact(){
+
 	let firstName = document.getElementById("NewFirstName").value;
 	let lastName = document.getElementById("NewLastName").value;
 	let phone = document.getElementById("NewPhone").value;
 	let email = document.getElementById("NewEmail").value;
+
+	let notice = validContact(firstName, lastName, phone, email);
+	if (notice != "") {
+		//display toast for formatting error
+		contactFormatNotice(notice);
+		return;
+	}
 
 	let temp = {FirstName: firstName, LastName: lastName, Phone: phone, Email: email, UserID: ID};
 
@@ -570,3 +609,10 @@ function addContact(){
 function showHeader() {
 	document.getElementById("welcomeHeader").innerHTML = "Welcome, " + FirstName + " " + LastName + "!";
 }
+
+function contactFormatNotice(notice) {
+	var x = document.getElementById("snackbar");
+	x.className = "show";
+	x.innerHTML = notice;
+	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+  }
