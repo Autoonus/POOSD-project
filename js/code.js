@@ -179,29 +179,30 @@ function registerInputsOK() {
 		notice+= "Password must contain only letters, numbers, and special characters<br>";
 	}
 
+	if (strikes == 0) {
+		return true;
+	} else {
+		reqs.style.display = "block";
+		output.innerHTML = notice;
+		return false;
+	}
+}
+
+function attemptRegister() {
+	document.getElementById("registerResult").innerHTML = "Attempting registration...";
 	isAvailable(newUser).then((available) => {
 		if (!available) {
-			strikes++;
-			notice+= "Username was already taken<br>";
-		}
-
-		if (strikes == 0) {
-			return true;
+			document.getElementById("registerResult").innerHTML = "Username already Taken";
 		} else {
-			reqs.style.display = "block";
-			output.innerHTML = notice;
-			return false;
+			register();
 		}
-
 	}).catch((err) => {
 		console.log("Promise error")
-		return false;
 	});
 }
 
 function register() {
-	document.getElementById("registerResult").innerHTML = "Attempting registration...";
-
+	
 	if (!registerInputsOK()) {
 		document.getElementById("registerResult").innerHTML = "Invalid inputs...";
 		return;
