@@ -129,7 +129,7 @@ function checkValidSession() {
 	}
 }
 
-function registerInputsOK() {
+async function registerInputsOK() {
 	let reqs = document.getElementById("reqs");
 	let output = document.getElementById("notice");
 	let strikes = 0;
