@@ -101,8 +101,7 @@ header {
 
 .validate {
 	position: absolute;
-	left: 1000px;
-	top: 500px;
+	left: 60%;
 	width: 400px;
 	height: 480px;
 	background: transparent;
