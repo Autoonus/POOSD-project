@@ -442,7 +442,6 @@ header {
 #contactContainer tbody {
 	display: block;
 	overflow: auto;
-	height: 100%;
 }
 
 table {
