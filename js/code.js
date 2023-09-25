@@ -294,7 +294,7 @@ function searchContact() {
 
 function generateButtonText(contactID, rowNum) {
 	editButton = "<button class='editButton' id='editButton" + rowNum.toString() + "' type='button' onclick='editContact(" + rowNum.toString() + ");'><ion-icon class='ionWhite' name=\"create\"></ion-icon></button> ";
-	delButton = "<button class='delButton' id='delButton" + rowNum.toString() + "' type='button' onclick='deleteContact(" + contactID.toString() + ");'><ion-icon class='ionWhite' name=\"trash\"></ion-icon></button> ";
+	delButton = "<button class='delButton' id='delButton" + rowNum.toString() + "' type='button' onclick='presentAlert(" + contactID.toString() + ");'><ion-icon class='ionWhite' name=\"trash\"></ion-icon></button> ";
 	saveButton = "<button class='saveButton' style='display: none;' id='saveButton" + rowNum.toString() + "' type='button' onclick='saveContact(" + rowNum.toString() + ", " + contactID.toString() + ");'><ion-icon class='ionWhite' name=\"checkmark-circle\"></ion-icon></button> ";
 	cancelButton = "<button class='cancelButton' style='display: none;' id='cancelButton" + rowNum.toString() + "' type='button' onclick='cancelEdit(" + rowNum.toString() + ");'><ion-icon class='ionWhite' name=\"close-circle\"></ion-icon></button>";
 	return editButton + delButton + saveButton + cancelButton;
