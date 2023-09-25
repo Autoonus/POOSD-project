@@ -117,6 +117,10 @@ header {
 	margin-left: 30px
 }
 
+.name {
+	float:left;
+}
+
 #notice {
 	padding: 10px 20px;
 }
