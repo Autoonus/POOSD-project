@@ -270,8 +270,7 @@ function searchContact() {
 							cell2.innerHTML = jsonObject.results[i].LastName;
 							cell3.innerHTML = jsonObject.results[i].PhoneNumber;
 							cell4.innerHTML = jsonObject.results[i].EmailAddress;
-							cell5.outerHTML = "<td class='buttonTd'></td>";
-							cell5.innerHTML = generateButtonText(jsonObject.results[i].ID, i + 1);
+							cell5.outerHTML = "<td class='buttonTd'>" + generateButtonText(jsonObject.results[i].ID, i + 1) + "</td>";
 						}
 
 						table.style.display = "table";
