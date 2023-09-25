@@ -451,6 +451,13 @@ td {
 	color: rgb(0, 0, 0);
 }
 
+.buttonTd {
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 tr {
 	background-color: rgba(255, 255, 255, .5);
 }
@@ -485,19 +492,23 @@ thead tr {
 .editButton {
 	border-radius: 4px;
 	background-color: #162938;
+	flex: 0 1 auto;
 }
 
 .delButton {
 	border-radius: 4px;
 	background-color: #aa0000;
+	flex: 0 1 auto;
 }
 
 .saveButton {
 	border-radius: 4px;
 	background-color: #08b103;
+	flex: 0 1 auto;
 }
 
 .cancelButton {
 	border-radius: 4px;
 	background-color: #aa0000;
+	flex: 0 1 auto;
 }
