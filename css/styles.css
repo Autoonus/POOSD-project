@@ -540,3 +540,13 @@ thead tr {
 	background-color: #aa0000;
 	flex: 0 1 auto;
 }
+
+#loginResult {
+	padding: 5px;
+	text-align: center;
+}
+
+#registerResult {
+	padding: 5px;
+	text-align: center;
+}
