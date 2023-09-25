@@ -447,13 +447,13 @@ header {
 	text-decoration: underline;
 }
 
-.contactTableBox {
+.contactContainer {
 	width: auto;
 	height: 400px;
 	overflow-y: auto;
 }
 
-.contactTableBox thead th {
+.contactContainer thead th {
 	position: sticky;
 	top: 0px; 
   }
