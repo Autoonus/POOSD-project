@@ -138,7 +138,7 @@ function registerInputsOK() {
 	let fname = document.getElementById("FirstName").value;
 	let lname = document.getElementById("LastName").value;
 	let newUser = document.getElementById("newUser").value;
-	let newPass = document.getElementById("newPassword").value;
+	let newPassword = document.getElementById("newPassword").value;
 
 	var userAllowed = /^[0-9A-Za-z]*$/;
 	var passAllowed  = /^[0-9A-Za-z!@#$%^&*]*$/;
