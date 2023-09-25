@@ -194,6 +194,7 @@ function attemptRegister() {
 		if (!available) {
 			document.getElementById("registerResult").innerHTML = "Username already Taken";
 		} else {
+			console.log("Username available...");
 			register();
 		}
 	}).catch((err) => {
