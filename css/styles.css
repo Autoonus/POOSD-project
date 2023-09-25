@@ -441,6 +441,11 @@ header {
 	top: 0px; 
   }
 
+table {
+	border-collapse: collapse;
+	width: 100%
+}
+
 th {
 	font-size: 18px;
 	padding: 10px;
