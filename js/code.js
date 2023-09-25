@@ -191,7 +191,7 @@ function registerInputsOK() {
 		return true;
 	} else {
 		reqs.style.display = "block";
-		reqs.innterHTML = notice;
+		reqs.innerHTML = notice;
 		return false;
 	}
 }
