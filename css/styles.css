@@ -458,10 +458,6 @@ header {
 	top: 0px; 
   }
 
-tr:first-child {
-	background-color: rgba(22, 41, 56, .6);
-}
-
 th {
 	font-size: 18px;
 	padding: 10px;
