@@ -439,7 +439,7 @@ header {
 #contactContainer thead tr {
 	position: sticky;
 	top: 0px; 
-  }
+}
 
 table {
 	width: 100%
@@ -470,7 +470,7 @@ tbody tr:hover {
 }
 
 thead tr {
-	background-color:rgba(22, 41, 56, .6);
+	background-color:rgba(22, 41, 56, 1);
 }
 
 #addPrompt {
