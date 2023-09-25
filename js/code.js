@@ -291,10 +291,10 @@ function searchContact() {
 }
 
 function generateButtonText(contactID, rowNum) {
-	editButton = "<button class='Selected' id='editButton" + rowNum.toString() + "'type='button' class='buttons' onclick='editContact(" + rowNum.toString() + ");'>Edit</button> ";
-	delButton = "<button class='Selected' id='delButton" + rowNum.toString() + "' type='button' class='buttons' onclick='deleteContact(" + contactID.toString() + ");'>Delete</button> ";
-	saveButton = "<button style='display: none;' class='Selected' id='saveButton" + rowNum.toString() + "' type='button' class='buttons' onclick='saveContact(" + rowNum.toString() + ", " + contactID.toString() + ");'>Save</button> ";
-	cancelButton = "<button style='display: none;' class='Selected' id='cancelButton" + rowNum.toString() + "' type='button' class='buttons' onclick='cancelEdit(" + rowNum.toString() + ");'>Cancel</button>";
+	editButton = "<button class='Selected' id='editButton" + rowNum.toString() + "'type='button' class='buttons' onclick='editContact(" + rowNum.toString() + ");'><ion-icon name=\"create\"></ion-icon></button> ";
+	delButton = "<button class='Selected' id='delButton" + rowNum.toString() + "' type='button' class='buttons' onclick='deleteContact(" + contactID.toString() + ");'><ion-icon name=\"trash\"></ion-icon></button> ";
+	saveButton = "<button style='display: none;' class='Selected' id='saveButton" + rowNum.toString() + "' type='button' class='buttons' onclick='saveContact(" + rowNum.toString() + ", " + contactID.toString() + ");'><ion-icon name=\"checkmark-circle\"></ion-icon></button> ";
+	cancelButton = "<button style='display: none;' class='Selected' id='cancelButton" + rowNum.toString() + "' type='button' class='buttons' onclick='cancelEdit(" + rowNum.toString() + ");'><ion-icon name=\"close-circle\"></ion-icon></button>";
 	return editButton + delButton + saveButton + cancelButton;
 }
 
