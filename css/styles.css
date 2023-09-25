@@ -483,22 +483,22 @@ thead tr {
 	font-size: 24px;
 }
 
-#editButton {
+.editButton {
 	border-radius: 4px;
 	background-color: #162938;
 }
 
-#delButton {
+.delButton {
 	border-radius: 4px;
 	background-color: #aa0000;
 }
 
-#saveButton {
+.saveButton {
 	border-radius: 4px;
 	background-color: #08b103;
 }
 
-#cancelButton {
+.cancelButton {
 	border-radius: 4px;
 	background-color: #aa0000;
 }
