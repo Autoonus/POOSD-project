@@ -264,8 +264,10 @@ function isAvailable(Login) {
 					let jsonObject = JSON.parse( xhr.responseText );
 
 					if (jsonObject.error == '') {
+						console.log("Username available php");
 						resolve(true);
 					} else {
+						console.log("Username not available php");
 						resolve(false);
 					}
 
